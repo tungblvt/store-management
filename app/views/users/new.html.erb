@@ -1,0 +1,28 @@
+<%= provide :title, t("auth.sign_up.title") %>
+<%= form_for @user do |f| %>
+  <div class="container box-signup">
+    <div class="title-signup">
+      <h1><%=t "auth.sign_up.title" %></h1>
+      <p><%= t "auth.sign_up.sub_title" %></p>
+    </div>
+    <%= render "shared/error_messages", object: f.object %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control",
+      :placeholder => "#{t("auth.sign_up.enter_name")}" %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "form-control",
+      :placeholder => "#{t("auth.sign_up.enter_mail")}" %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control",
+      :placeholder => "#{t("auth.sign_up.enter_password")}" %>
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control",
+      :placeholder => "#{t("auth.sign_up.repeat_password")}" %>
+
+    <%= f.submit t("auth.sign_up.title"), class: "signbtn" %>
+  </div>
+<% end %>
