@@ -45,4 +45,8 @@ class User < ApplicationRecord
   def forget
     update remember_token: nil
   end
+
+  def is_admin?
+    role == Settings.role.admin
+  end
 end

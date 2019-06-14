@@ -1,5 +1,8 @@
 en:
   title: "Store Management"
+  admin: "Admin"
+  website: "Website"
+  home: "Home"
   auth:
     login_success: "Login successful!"
     account_not_activated: "Account not activated."
@@ -32,3 +35,14 @@ en:
     Edit: "Edit"
     Delete: "Delete"
     Lock: "Lock"
+  side_bar:
+    manager_users: "Manager Users"
+    manager_stores: "Manager Stores"
+    manager_products: "Manager Products"
+  header:
+    name: "secondtruth"
+    user_profile: "User Profile"
+    settings: "Settings"
+    logout: "Logout"
+  footer:
+    title: "Footer"

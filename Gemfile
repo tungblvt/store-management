@@ -17,6 +17,7 @@ gem "bootstrap-sass", "3.3.7"
 gem "config"
 gem "jquery-rails"
 gem "kaminari"
+gem "font-awesome-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

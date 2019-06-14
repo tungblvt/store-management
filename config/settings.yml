@@ -8,3 +8,5 @@ validates:
   name:
     name_max: 50
 user_per_page: 5
+role:
+  admin: "ADMIN"
