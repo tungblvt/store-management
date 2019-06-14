@@ -1,0 +1,7 @@
+validates:
+  email:
+    regex: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    lenght: 255
+  password:
+    lenght:
+      minimum: 6
