@@ -7,3 +7,4 @@ validates:
       minimum: 6
   name:
     name_max: 50
+user_per_page: 5

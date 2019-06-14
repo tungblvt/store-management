@@ -22,3 +22,13 @@ en:
       repeat_password: "Repeat Password"
       cancel: "Cancel"
       singup_success: "Signup success"
+  list_users:
+    all_users: "All Users"
+    STT: "STT"
+    Avatar: "Avatar"
+    Name: "Name"
+    Role: "Role"
+    Action: "Action"
+    Edit: "Edit"
+    Delete: "Delete"
+    Lock: "Lock"

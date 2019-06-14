@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><%= t "list_users.all_users" %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table-hover table list-users">
+        <tr>
+          <th><%= t "list_users.STT" %></th>
+          <th><%= t "list_users.Avatar" %></th>
+          <th><%= t "list_users.Name" %>></th>
+          <th><%= t "list_users.Role" %></th>
+          <th><%= t "list_users.Action" %></th>
+        </tr>
+        <% stt = 0 %>
+        <% @users.each do |user| %>
+        <tr>
+          <td>#<%= stt+=1 %></td>
+          <td><%= image_tag user.avatar, alt: "avatar" %></td>
+          <td><%= user.name %></td>
+          <td><%= user.role %></td>
+          <td>
+            <a href=""><%= t "list_users.Edit" %></a>
+            <a href=""><%= t "list_users.Delete" %></a>
+            <a href=""><%= t "list_users.Lock" %></a>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="paginate text-center">
+      <%= paginate @users %>
+    </div>
+  </div>
+</div>
