@@ -25,6 +25,7 @@ build-iPhoneSimulator/
 config/credentials.yml.enc
 config/database.yml
 config/storage.yml
+log/*
 
 ## Specific to RubyMotion (use of CocoaPods):
 #

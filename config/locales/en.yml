@@ -1,4 +1,5 @@
 en:
+  title: "Store Management"
   auth:
     login_success: "Login successful!"
     account_not_activated: "Account not activated."
@@ -9,3 +10,15 @@ en:
     remember_me_on_this_computer: ""
     new_user: "New user?"
     sign_up_now: "Sign up now"
+    sign_up:
+      title: "Sign up"
+      sub_title: "Please fill in this form to create an account."
+      name: "Name"
+      enter_name: "Enter your name"
+      mail: "Email"
+      enter_mail: "Enter your email"
+      password: "Password"
+      enter_password: "Enter your password"
+      repeat_password: "Repeat Password"
+      cancel: "Cancel"
+      singup_success: "Signup success"

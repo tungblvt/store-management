@@ -5,3 +5,5 @@ validates:
   password:
     lenght:
       minimum: 6
+  name:
+    name_max: 50

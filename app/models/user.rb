@@ -6,7 +6,9 @@ class User < ApplicationRecord
   has_many :orders
 
   VALID_EMAIL_REGEX = Settings.validates.email.regex
+  USER_PARAMS = %i(name email password password_confirmation).freeze
 
+  validates :name, presence: true, length: {maximum: Settings.validates.name.name_max}
   validates :email, presence: true,
     length: { maximum: Settings.validates.email.lenght },
     format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
