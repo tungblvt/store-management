@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :comments
   has_many :orders
 
+  scope :order_by_column, ->(column){order(column)}
+
   VALID_EMAIL_REGEX = Settings.validates.email.regex
   USER_PARAMS = %i(name email password password_confirmation).freeze
 
