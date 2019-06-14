@@ -1,1 +1,11 @@
 en:
+  auth:
+    login_success: "Login successful!"
+    account_not_activated: "Account not activated."
+    check_your_email_for_the_activation_link: "Check your email for the activation link."
+    invalid_email_or_password_combination: "Invalid email/password combination."
+    login: "Login"
+    forgot_password_link: ""
+    remember_me_on_this_computer: ""
+    new_user: "New user?"
+    sign_up_now: "Sign up now"

@@ -1,0 +1,608 @@
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS `store_management`[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE `store_management` DEFAULT CHARACTER SET `utf8`[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE `store_management_test` DEFAULT CHARACTER SET `utf8`[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (328.7ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (194.8ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('1297284191672193690', 0)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20190613074611)
+  [1m[35m (216.7ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `email` varchar(255), `address` varchar(255), `phone` varchar(255), `avatar` varchar(255), `role` varchar(255), `password_digest` varchar(255), `remember_digest` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+  ↳ db/migrate/20190613074611_create_users.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613074611')[0m
+  ↳ bin/rails:9
+  [1m[35m (36.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateStores (20190613074850)
+  [1m[35m (208.2ms)[0m  [1m[35mCREATE TABLE `stores` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `short_desciption` varchar(255), `description` text, `address` varchar(255), `status` tinyint(1), `is_lock` tinyint(1), `image` varchar(255), `user_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_stores_on_user_id`  (`user_id`), CONSTRAINT `fk_rails_b526db2ffb`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+)[0m
+  ↳ db/migrate/20190613074850_create_stores.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613074850')[0m
+  ↳ bin/rails:9
+  [1m[35m (63.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateCategories (20190613074955)
+  [1m[35m (247.9ms)[0m  [1m[35mCREATE TABLE `categories` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `is_deleted` tinyint(1), `store_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_categories_on_store_id`  (`store_id`), CONSTRAINT `fk_rails_72b047249d`
+FOREIGN KEY (`store_id`)
+  REFERENCES `stores` (`id`)
+)[0m
+  ↳ db/migrate/20190613074955_create_categories.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613074955')[0m
+  ↳ bin/rails:9
+  [1m[35m (39.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateProducts (20190613075123)
+  [1m[35m (208.3ms)[0m  [1m[35mCREATE TABLE `products` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `price` varchar(255), `image` varchar(255), `status` varchar(255), `is_deleted` tinyint(1), `category_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_category_id`  (`category_id`), CONSTRAINT `fk_rails_fb915499a4`
+FOREIGN KEY (`category_id`)
+  REFERENCES `categories` (`id`)
+)[0m
+  ↳ db/migrate/20190613075123_create_products.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613075123')[0m
+  ↳ bin/rails:9
+  [1m[35m (28.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateComments (20190613075156)
+  [1m[35m (240.6ms)[0m  [1m[35mCREATE TABLE `comments` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `content` text, `rate` int, `user_id` bigint, `product_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_comments_on_user_id`  (`user_id`),  INDEX `index_comments_on_product_id`  (`product_id`), CONSTRAINT `fk_rails_03de2dc08c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_a0d280f6e4`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+)[0m
+  ↳ db/migrate/20190613075156_create_comments.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613075156')[0m
+  ↳ bin/rails:9
+  [1m[35m (29.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateOrders (20190613075240)
+  [1m[35m (341.7ms)[0m  [1m[35mCREATE TABLE `orders` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `address` varchar(255), `status` varchar(255), `shipped_date` datetime, `user_id` bigint, `store_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_orders_on_user_id`  (`user_id`),  INDEX `index_orders_on_store_id`  (`store_id`), CONSTRAINT `fk_rails_f868b47f6a`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_f0be2fda72`
+FOREIGN KEY (`store_id`)
+  REFERENCES `stores` (`id`)
+)[0m
+  ↳ db/migrate/20190613075240_create_orders.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613075240')[0m
+  ↳ bin/rails:9
+  [1m[35m (39.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateOrderDetails (20190613075320)
+  [1m[35m (285.3ms)[0m  [1m[35mCREATE TABLE `order_details` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `quantity` int, `price` varchar(255), `order_id` bigint, `product_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_order_details_on_order_id`  (`order_id`),  INDEX `index_order_details_on_product_id`  (`product_id`), CONSTRAINT `fk_rails_e5976611fd`
+FOREIGN KEY (`order_id`)
+  REFERENCES `orders` (`id`)
+, CONSTRAINT `fk_rails_4f2ac9473b`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+)[0m
+  ↳ db/migrate/20190613075320_create_order_details.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613075320')[0m
+  ↳ bin/rails:9
+  [1m[35m (28.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2019-06-13 08:51:11', '2019-06-13 08:51:11')[0m
+  ↳ bin/rails:9
+  [1m[35m (33.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT RELEASE_LOCK('1297284191672193690')[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2019-06-13 16:43:30 +0700
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /home/le.van.tungb/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /home/le.van.tungb/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/le.van.tungb/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/le.van.tungb/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (2.3ms)
+Completed 200 OK in 12ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-06-13 16:43:32 +0700
+Processing by SessionController#create as HTML
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `lenght' for nil:NilClass):
+  
+app/models/user.rb:12:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/session_controller.rb:5:in `create'
+Started GET "/login" for ::1 at 2019-06-13 16:43:56 +0700
+Processing by SessionController#create as HTML
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/session_controller.rb:5:in `create'
+Started GET "/login" for ::1 at 2019-06-13 16:44:53 +0700
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (77.0ms)
+Completed 200 OK in 308ms (Views: 305.1ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:1
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ db/seeds.rb:1
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `address`, `phone`, `role`, `password_digest`, `remember_digest`, `created_at`, `updated_at`) VALUES ('Example User', 'example@railstutorial.org', 'ha noi', '1234567', 'admin', 'foobar', 'foobar', '2019-06-13 09:47:23', '2019-06-13 09:47:23')[0m
+  ↳ db/seeds.rb:1
+  [1m[35m (44.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:1
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (1390.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS `store_management`[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (52.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS `store_management_test`[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE DATABASE `store_management` DEFAULT CHARACTER SET `utf8`[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE DATABASE `store_management_test` DEFAULT CHARACTER SET `utf8`[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (229.8ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (188.9ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('1297284191672193690', 0)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20190613074611)
+  [1m[35m (195.7ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `email` varchar(255), `address` varchar(255), `phone` varchar(255), `avatar` varchar(255), `role` varchar(255), `password_digest` varchar(255), `remember_digest` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+  ↳ db/migrate/20190613074611_create_users.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613074611')[0m
+  ↳ bin/rails:9
+  [1m[35m (35.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateStores (20190613074850)
+  [1m[35m (332.8ms)[0m  [1m[35mCREATE TABLE `stores` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `short_desciption` varchar(255), `description` text, `address` varchar(255), `status` tinyint(1), `is_lock` tinyint(1), `image` varchar(255), `user_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_stores_on_user_id`  (`user_id`), CONSTRAINT `fk_rails_b526db2ffb`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+)[0m
+  ↳ db/migrate/20190613074850_create_stores.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613074850')[0m
+  ↳ bin/rails:9
+  [1m[35m (84.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateCategories (20190613074955)
+  [1m[35m (247.0ms)[0m  [1m[35mCREATE TABLE `categories` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `is_deleted` tinyint(1), `store_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_categories_on_store_id`  (`store_id`), CONSTRAINT `fk_rails_72b047249d`
+FOREIGN KEY (`store_id`)
+  REFERENCES `stores` (`id`)
+)[0m
+  ↳ db/migrate/20190613074955_create_categories.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613074955')[0m
+  ↳ bin/rails:9
+  [1m[35m (29.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateProducts (20190613075123)
+  [1m[35m (213.6ms)[0m  [1m[35mCREATE TABLE `products` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `price` varchar(255), `image` varchar(255), `status` varchar(255), `is_deleted` tinyint(1), `category_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_category_id`  (`category_id`), CONSTRAINT `fk_rails_fb915499a4`
+FOREIGN KEY (`category_id`)
+  REFERENCES `categories` (`id`)
+)[0m
+  ↳ db/migrate/20190613075123_create_products.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613075123')[0m
+  ↳ bin/rails:9
+  [1m[35m (40.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateComments (20190613075156)
+  [1m[35m (231.9ms)[0m  [1m[35mCREATE TABLE `comments` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `content` text, `rate` int, `user_id` bigint, `product_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_comments_on_user_id`  (`user_id`),  INDEX `index_comments_on_product_id`  (`product_id`), CONSTRAINT `fk_rails_03de2dc08c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_a0d280f6e4`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+)[0m
+  ↳ db/migrate/20190613075156_create_comments.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613075156')[0m
+  ↳ bin/rails:9
+  [1m[35m (28.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateOrders (20190613075240)
+  [1m[35m (231.6ms)[0m  [1m[35mCREATE TABLE `orders` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `address` varchar(255), `status` varchar(255), `shipped_date` datetime, `user_id` bigint, `store_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_orders_on_user_id`  (`user_id`),  INDEX `index_orders_on_store_id`  (`store_id`), CONSTRAINT `fk_rails_f868b47f6a`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_f0be2fda72`
+FOREIGN KEY (`store_id`)
+  REFERENCES `stores` (`id`)
+)[0m
+  ↳ db/migrate/20190613075240_create_orders.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613075240')[0m
+  ↳ bin/rails:9
+  [1m[35m (39.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateOrderDetails (20190613075320)
+  [1m[35m (268.4ms)[0m  [1m[35mCREATE TABLE `order_details` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `quantity` int, `price` varchar(255), `order_id` bigint, `product_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_order_details_on_order_id`  (`order_id`),  INDEX `index_order_details_on_product_id`  (`product_id`), CONSTRAINT `fk_rails_e5976611fd`
+FOREIGN KEY (`order_id`)
+  REFERENCES `orders` (`id`)
+, CONSTRAINT `fk_rails_4f2ac9473b`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+)[0m
+  ↳ db/migrate/20190613075320_create_order_details.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20190613075320')[0m
+  ↳ bin/rails:9
+  [1m[35m (39.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2019-06-13 09:50:31', '2019-06-13 09:50:31')[0m
+  ↳ bin/rails:9
+  [1m[35m (42.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT RELEASE_LOCK('1297284191672193690')[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ db/seeds.rb:4
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `address`, `phone`, `role`, `password_digest`, `remember_digest`, `created_at`, `updated_at`) VALUES ('Example User', 'example@railstutorial.org', 'ha noi', '1234567', 'admin', '$2a$12$chCcvaiWDph9BRwKRSOLfe1bG.mriAeuKHGrsTFNoxHsH3EX6FkYK', '$2a$12$chCcvaiWDph9BRwKRSOLfe1bG.mriAeuKHGrsTFNoxHsH3EX6FkYK', '2019-06-13 09:53:23', '2019-06-13 09:53:23')[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (31.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+Started GET "/login" for ::1 at 2019-06-13 16:53:35 +0700
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /home/le.van.tungb/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-06-13 16:53:41 +0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rSkFLVMWwVkbJSOMZacyPiGq88z/2nN2KJKd1f0Q8BczHAA9HNP7Hhhju7dgh5U0gGcVILE1KF11hWAu8VYkzA==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ app/controllers/session_controller.rb:5
+Completed 500 Internal Server Error in 316ms (ActiveRecord: 2.6ms)
+
+
+  
+NoMethodError (undefined method `activated?' for #<User:0x00007ff3f0236d88>):
+  
+app/controllers/session_controller.rb:7:in `create'
+Started POST "/login" for ::1 at 2019-06-13 16:55:08 +0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rSkFLVMWwVkbJSOMZacyPiGq88z/2nN2KJKd1f0Q8BczHAA9HNP7Hhhju7dgh5U0gGcVILE1KF11hWAu8VYkzA==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ app/controllers/session_controller.rb:5
+Completed 500 Internal Server Error in 339ms (ActiveRecord: 1.4ms)
+
+
+  
+NoMethodError (undefined method `log_in' for #<SessionController:0x00007ff3fc220928>
+Did you mean?  login_url):
+  
+app/controllers/session_controller.rb:8:in `create'
+Started POST "/login" for ::1 at 2019-06-13 16:56:27 +0700
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /home/le.van.tungb/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /home/le.van.tungb/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rSkFLVMWwVkbJSOMZacyPiGq88z/2nN2KJKd1f0Q8BczHAA9HNP7Hhhju7dgh5U0gGcVILE1KF11hWAu8VYkzA==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ app/controllers/session_controller.rb:5
+Completed 500 Internal Server Error in 337ms (ActiveRecord: 1.6ms)
+
+
+  
+NoMethodError (undefined method `log_in' for #<SessionController:0x000055d7a4dee618>
+Did you mean?  login_url):
+  
+app/controllers/session_controller.rb:8:in `create'
+Started POST "/login" for ::1 at 2019-06-13 16:57:46 +0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rSkFLVMWwVkbJSOMZacyPiGq88z/2nN2KJKd1f0Q8BczHAA9HNP7Hhhju7dgh5U0gGcVILE1KF11hWAu8VYkzA==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ app/controllers/session_controller.rb:5
+Completed 500 Internal Server Error in 329ms (ActiveRecord: 1.4ms)
+
+
+  
+NoMethodError (undefined method `forget' for #<SessionController:0x000055d7a4d44550>
+Did you mean?  format):
+  
+app/controllers/session_controller.rb:9:in `create'
+Started POST "/login" for ::1 at 2019-06-13 17:00:37 +0700
+  
+ActionController::RoutingError (uninitialized constant ApplicationController::SessionsHelper):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/session_controller.rb:1:in `<main>'
+Started POST "/login" for ::1 at 2019-06-13 17:00:58 +0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rSkFLVMWwVkbJSOMZacyPiGq88z/2nN2KJKd1f0Q8BczHAA9HNP7Hhhju7dgh5U0gGcVILE1KF11hWAu8VYkzA==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ app/controllers/session_controller.rb:5
+Completed 500 Internal Server Error in 279ms (ActiveRecord: 1.4ms)
+
+
+  
+NoMethodError (undefined method `forget' for #<User:0x000055d7a3cc7600>):
+  
+app/helpers/session_helper.rb:39:in `forget'
+app/controllers/session_controller.rb:9:in `create'
+Started POST "/__web_console/repl_sessions/9975db8feb6291925a207c21b01313f8/trace" for ::1 at 2019-06-13 17:01:14 +0700
+Started POST "/login" for ::1 at 2019-06-13 17:01:48 +0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rSkFLVMWwVkbJSOMZacyPiGq88z/2nN2KJKd1f0Q8BczHAA9HNP7Hhhju7dgh5U0gGcVILE1KF11hWAu8VYkzA==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ app/controllers/session_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:40
+  [1m[36mUser Exists (18.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ app/models/user.rb:40
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:40
+Completed 500 Internal Server Error in 400ms (ActiveRecord: 19.8ms)
+
+
+  
+NameError (undefined local variable or method `root_url' for #<SessionController:0x00007fd6b48b9088>):
+  
+app/controllers/session_controller.rb:10:in `create'
+Started POST "/login" for ::1 at 2019-06-13 17:05:22 +0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rSkFLVMWwVkbJSOMZacyPiGq88z/2nN2KJKd1f0Q8BczHAA9HNP7Hhhju7dgh5U0gGcVILE1KF11hWAu8VYkzA==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ app/controllers/session_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:40
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ app/models/user.rb:40
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:40
+Redirected to 
+Completed 500 Internal Server Error in 380ms (ActiveRecord: 2.0ms)
+
+
+  
+NoMethodError (undefined method `new_url' for #<SessionController:0x000055d7a494cc18>):
+  
+app/controllers/session_controller.rb:10:in `create'
+Started POST "/login" for ::1 at 2019-06-13 17:07:18 +0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rSkFLVMWwVkbJSOMZacyPiGq88z/2nN2KJKd1f0Q8BczHAA9HNP7Hhhju7dgh5U0gGcVILE1KF11hWAu8VYkzA==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ app/controllers/session_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:40
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ app/models/user.rb:40
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:40
+Redirected to http://localhost:3000/login
+Completed 302 Found in 276ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/login" for ::1 at 2019-06-13 17:07:19 +0700
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 143ms (Views: 141.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-06-13 17:10:20 +0700
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 39ms (Views: 37.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-06-13 17:10:26 +0700
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-06-13 17:10:26 +0700
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-06-13 17:10:27 +0700
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 33ms (Views: 28.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-06-13 17:10:27 +0700
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 35ms (Views: 30.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-06-14 07:58:30 +0700
+  [1m[35m (33.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /home/le.van.tungb/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /home/le.van.tungb/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (35.7ms)
+Completed 200 OK in 232ms (Views: 215.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-06-14 07:58:36 +0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KcxCQz5gU2vKQ3UmlpCTYPc5cp+RF3THWdrSpxQt5/+3+UdTcaVpLMkF7R2TsDRqVvSUc9/4L+wEzS9cGGszJA==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ app/controllers/session_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:40
+  [1m[36mUser Exists (8.9ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ app/models/user.rb:40
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:40
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 365ms (Views: 11.0ms | ActiveRecord: 49.5ms)
+
+
+Started GET "/login" for ::1 at 2019-06-14 07:58:40 +0700
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 16ms (Views: 14.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-06-14 07:58:43 +0700
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 15ms (Views: 13.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2019-06-14 07:59:40 +0700
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 14ms (Views: 12.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-06-14 07:59:44 +0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vka3ii/BICMpwxKuc9jmVKMiPSMbtb0GAhHDdqwDOrIgc7KaYAQaZCqFipV2+EFeAu/bz1Va5i1fBj6NoEXuaQ==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ app/controllers/session_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:40
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ app/models/user.rb:40
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:40
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 277ms (Views: 9.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/login" for ::1 at 2019-06-14 08:00:26 +0700
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 33ms (Views: 31.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2019-06-14 08:00:31 +0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Fr4qzx9FXT1ONGYYFtZ1nWN+JXxh8GtXAKvbgJMa4mqIiy/fUIBnek1y/iMT9tKXwrPDkC8fMHxdvCZ7n1w2sQ==", "session"=>{"email"=>"example@railstutorial.org", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' LIMIT 1[0m
+  ↳ app/controllers/session_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:40
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = 'example@railstutorial.org' AND `users`.`id` != 1 LIMIT 1[0m
+  ↳ app/models/user.rb:40
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:40
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 270ms (Views: 7.8ms | ActiveRecord: 2.4ms)
+
+
