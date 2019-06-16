@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_075320) do
 
   create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "short_desciption"
+    t.string "short_description"
     t.text "description"
     t.string "address"
     t.boolean "status"

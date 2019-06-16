@@ -14,6 +14,15 @@ User.create! name:  "Admin User",
              remember_digest: password,
              role: "ADMIN"
 
+User.create! name:  "Manager User",
+             email: "manager@gmail.com",
+             avatar: url_image,
+             address: FFaker::Lorem.paragraph(2),
+             phone: "1234567",
+             password_digest: password,
+             remember_digest: password,
+             role: "MANAGER"
+
 99.times do |n|
   url_image = FFaker::Image.url size = "60x60", format = "png",
                                 bg_color = :random,
@@ -29,3 +38,9 @@ User.create! name:  "Admin User",
                remember_digest: password,
                role: "MEMBER"
 end
+
+Store.create! name: "store name",
+              short_description: "short description",
+              description: "description",
+              image: "image",
+              user_id: 1
