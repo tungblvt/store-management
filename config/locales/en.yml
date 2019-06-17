@@ -39,8 +39,11 @@ en:
     Delete: "Delete"
     Lock: "Lock"
     delete_successfully: "Delete successfully"
+    update_successfully: "Update successfully"
     some_thing_was_wrong: "Some thing was wrong"
     are_you_sure: "Are you sure?"
+    enter_your_address: "Enter your address"
+    enter_your_phone: "Enter your phone"
   side_bar:
     manager_users: "Manager Users"
     manager_stores: "Manager Stores"
@@ -76,3 +79,5 @@ en:
     destroy_fail: "Delete fail!"
     validate_image_size: "Image should be less than 5MB"
     no_permission: "You don't have permission"
+  user:
+    validate_image_size: "Image should be less than 5MB"

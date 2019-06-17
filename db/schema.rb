@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_075320) do
     t.string "address"
     t.string "phone"
     t.string "avatar"
-    t.string "role"
+    t.integer "role"
     t.string "password_digest"
     t.string "remember_digest"
     t.datetime "created_at", null: false

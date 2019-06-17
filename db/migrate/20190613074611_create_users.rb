@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :phone
       t.string :avatar
-      t.string :role
+      t.integer :role
       t.string :password_digest
       t.string :remember_digest
 

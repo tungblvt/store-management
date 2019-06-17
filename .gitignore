@@ -26,6 +26,7 @@ config/credentials.yml.enc
 config/database.yml
 config/storage.yml
 log/*
+public/uploads/*
 
 ## Specific to RubyMotion (use of CocoaPods):
 #
