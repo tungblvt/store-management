@@ -35,6 +35,9 @@ en:
     Edit: "Edit"
     Delete: "Delete"
     Lock: "Lock"
+    delete_successfully: "Delete successfully"
+    some_thing_was_wrong: "Some thing was wrong"
+    are_you_sure: "Are you sure?"
   side_bar:
     manager_users: "Manager Users"
     manager_stores: "Manager Stores"

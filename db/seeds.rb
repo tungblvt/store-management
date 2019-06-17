@@ -12,7 +12,7 @@ User.create! name:  "Admin User",
              phone: "1234567",
              password_digest: password,
              remember_digest: password,
-             role: "admin"
+             role: "ADMIN"
 
 99.times do |n|
   url_image = FFaker::Image.url size = "60x60", format = "png",
@@ -27,5 +27,5 @@ User.create! name:  "Admin User",
                phone: "1234567",
                password_digest: password,
                remember_digest: password,
-               role: "member"
+               role: "MEMBER"
 end
