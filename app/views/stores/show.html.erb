@@ -1,3 +1,21 @@
-<%= @store.name %>
-<%= @store.short_description %>
-<%= image_tag @store.image.url if @store.image? %>
+<div class="row">
+  <div class="col-md-5 col-lg-5">
+    <%= image_tag @store.image.url if @store.image? %>
+    <%= image_tag Settings.img_store_default unless @store.image? %>
+  </div>
+  <div class="col-md-6 col-lg-6 store-info">
+    <div class="name-store"><%= @store.name %></div>
+    <div class="address-store"><%= @store.address %></div>
+    <div class="status-store">
+      <div class="status-store-title"><%= t "store.status" %></div>
+      <% if @store.status? %>
+        <span class="store-open"> <%= t "store.opening" %></span>
+      <% end %>
+      <% unless @store.status? %>
+        <span class="store-close"> <%= t "store.closing" %></span>
+      <% end %>
+    </div>
+    <div class="store-short-description"><%= @store.short_description %></div>
+    <div class="store-description"><%= @store.description %></div>
+  </div>
+</div>

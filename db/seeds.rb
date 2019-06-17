@@ -40,6 +40,7 @@ User.create! name:  "Manager User",
 end
 
 Store.create! name: "store name",
+              address: "Address",
               short_description: "short description",
               description: "description",
               image: "image",

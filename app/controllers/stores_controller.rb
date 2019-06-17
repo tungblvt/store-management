@@ -54,6 +54,28 @@ class StoresController < AdminsController
     redirect_to stores_url
   end
 
+  def lock
+    @store = Store.find_by id: params[:id]
+    if @store
+      @store.lock_store
+      respond_to do |format|
+        format.html {redirect_to @store}
+        format.js
+      end
+    end
+  end
+
+  def unlock
+    @store = Store.find_by id: params[:id]
+    if @store
+      @store.unlock_store
+      respond_to do |format|
+        format.html {redirect_to @store}
+        format.js
+      end
+    end
+  end
+
   private
 
   def load_store

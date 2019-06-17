@@ -1,6 +1,55 @@
+@import 'colors';
+
 .fa-add-fix {
   position: fixed;
   font-size: 40px !important;
   top: 550px;
-  right: 200px;
+  right: 100px;
+}
+.store-open {
+  color: $active-color !important;
+}
+.store-close {
+  color: $close-color !important;
+}
+.row {
+  .store-info {
+    margin-left: 20px;
+    .name-store {
+      font-size: 22px;
+      color: #464646;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .address-store {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .store-short-description {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    .store-description {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    .status-store {
+      display: flex;
+      .status-store-title {
+        color: $color-blue;
+      }
+    }
+  }
+}
+.lock-store {
+  color: $close-color !important;
+}
+.unlock-store {
+  color: $active-color !important;
+}
+.fa-cursor-point {
+  cursor: pointer;
 }

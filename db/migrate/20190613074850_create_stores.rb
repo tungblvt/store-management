@@ -5,8 +5,8 @@ class CreateStores < ActiveRecord::Migration[5.2]
       t.string :short_description
       t.text :description
       t.string :address
-      t.boolean :status
-      t.boolean :is_lock
+      t.boolean :status, :default => true
+      t.boolean :is_lock, :default => false
       t.string :image
       t.references :user, foreign_key: true
 

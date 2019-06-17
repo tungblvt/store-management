@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_075320) do
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false
     t.bigint "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_075320) do
     t.string "price"
     t.string "image"
     t.string "status"
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2019_06_13_075320) do
     t.string "short_description"
     t.text "description"
     t.string "address"
-    t.boolean "status"
-    t.boolean "is_lock"
+    t.boolean "status", default: true
+    t.boolean "is_lock", default: false
     t.string "image"
     t.bigint "user_id"
     t.datetime "created_at", null: false
