@@ -1,0 +1,17 @@
+<%= provide :title, t("user.Show") %>
+<h1><%= t "user.Show" %></h1>
+<div class="row">
+  <div class="col-3">
+    <div class="wrap-avatar">
+      <%= image_tag @user.avatar.url if @user.avatar? %>
+    </div>
+  </div>
+  <div class="col-9">
+    <p><b><%= t "user.Name" %></b>: <%= @user.name %></p>
+    <p><b><%= t "user.Email" %></b>: <%= @user.email %></p>
+    <p><b><%= t "user.Role" %></b>: <%= @user.role %></p>
+    <p><b><%= t "user.Address" %></b>: <%= @user.address %></p>
+    <p><b><%= t "user.Phone" %></b>: <%= @user.phone %></p>
+    <p><a href="<%= users_url %>"><%= t "user.List_users" %></a></p>
+  </div>
+</div>

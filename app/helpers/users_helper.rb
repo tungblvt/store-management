@@ -1,9 +1,9 @@
 module UsersHelper
   def get_roles
-    User.roles
+    User.roles.keys
   end
 
   def get_role_key user
-    get_roles[user.role]
+    user.role
   end
 end

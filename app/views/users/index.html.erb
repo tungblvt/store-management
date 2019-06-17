@@ -1,4 +1,4 @@
-<div class="container">
+
   <div class="row">
     <div class="col-md-12">
       <h1><%= t "list_users.all_users" %></h1>
@@ -18,7 +18,7 @@
         <% @users.each do |user| %>
         <tr>
           <td>#<%= stt+=1 %></td>
-          <td><%= image_tag user.avatar, alt: "avatar" %></td>
+          <td><%= image_tag user.avatar.url if user.avatar? %></td>
           <td><%= user.name %></td>
           <td><%= user.role %></td>
           <td>
@@ -29,8 +29,10 @@
         <% end %>
       </table>
     </div>
-    <div class="paginate text-center">
-      <%= paginate @users %>
+    <div class="col-12">
+      <div class="paginate text-center">
+        <%= paginate @users %>
+      </div>
     </div>
+
   </div>
-</div>
