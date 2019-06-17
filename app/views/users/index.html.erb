@@ -23,8 +23,7 @@
           <td><%= user.role %></td>
           <td>
             <a href=""><%= t "list_users.Edit" %></a>
-            <a href=""><%= t "list_users.Delete" %></a>
-            <a href=""><%= t "list_users.Lock" %></a>
+            <%= link_to t("list_users.Delete"), user, method: :delete, data:{ confirm: t("list_users.are_you_sure")} %>
           </td>
         </tr>
         <% end %>
