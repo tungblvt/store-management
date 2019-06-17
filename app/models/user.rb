@@ -5,11 +5,14 @@ class User < ApplicationRecord
   has_many :comments
   has_many :orders
 
+  enum role: %i(ADMIN MANAGER MEMBER)
+
   scope :order_by_column, ->(column){order(column)}
 
   VALID_EMAIL_REGEX = Settings.validates.email.regex
-  USER_PARAMS = %i(name email password password_confirmation).freeze
+  USER_PARAMS = %i(name email password password_confirmation address phone role avatar).freeze
 
+  mount_uploader :avatar, PictureUploader
   validates :name, presence: true, length: {maximum: Settings.validates.name.name_max}
   validates :email, presence: true,
     length: { maximum: Settings.validates.email.lenght },
@@ -52,5 +55,9 @@ class User < ApplicationRecord
 
   def is_manager?
     role == Settings.role.manager
+  end
+
+  def image_size
+    errors.add :avatar, t("user.validate_image_size") if avatar.size > Settings.validates.user.image_size.megabytes
   end
 end

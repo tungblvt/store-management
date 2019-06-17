@@ -1,0 +1,40 @@
+<%= provide :title, t("list_users.Edit") %>
+<%= form_for @user do |f| %>
+  <div class="container box-signup">
+    <div class="title-signup">
+      <h1><%= t "list_users.Edit" %></h1>
+    </div>
+    <%= render "shared/error_messages", object: f.object %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control", placeholder: t("auth.sign_up.enter_name") %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control", placeholder: t("auth.sign_up.enter_mail") %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address %>
+      <%= f.text_field :address, class: "form-control", placeholder: t("list_users.enter_your_address") %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :phone %>
+      <%= f.text_field :phone, class: "form-control", placeholder: t("list_users.enter_your_phone") %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :role %>
+      <%= f.select :role, options_for_select(get_roles, selected: get_role_key(@user)), {}, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar, accept: "image/png,image/gif,image/jpeg", class: "form-control" %>
+    </div>
+
+    <%= f.submit t("list_users.Edit"), class: "btn btn-primary signbtn" %>
+  </div>
+<% end %>

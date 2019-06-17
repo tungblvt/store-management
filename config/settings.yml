@@ -10,9 +10,12 @@ validates:
   store:
     image_size: 5
     short_description_max: 140
+  user:
+    image_size: 5
 user_per_page: 5
 store_per_page: 20
 row_text_area_descriprion: 20
 role:
-  admin: "ADMIN"
-  manager: "MANAGER"
+  admin: "0"
+  manager: "1"
+  member: "2"
