@@ -49,4 +49,8 @@ class User < ApplicationRecord
   def is_admin?
     role == Settings.role.admin
   end
+
+  def is_manager?
+    role == Settings.role.manager
+  end
 end

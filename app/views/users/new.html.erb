@@ -23,6 +23,6 @@
     <%= f.password_field :password_confirmation, class: "form-control",
       :placeholder => "#{t("auth.sign_up.repeat_password")}" %>
 
-    <%= f.submit t("auth.sign_up.title"), class: "signbtn" %>
+    <%= button_tag t("auth.sign_up.title"), type: "submit", class: "btn btn-primary signbtn " %>
   </div>
 <% end %>
