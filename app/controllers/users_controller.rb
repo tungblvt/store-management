@@ -1,6 +1,6 @@
-class UsersController < ApplicationController
+class UsersController < AdminsController
   before_action :is_admin, only: %i(index destroy)
-  before_action :load_user, except: %i(new index create)
+  before_action :load_user, except: %i(index create)
 
   def new
     @user = User.new
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def is_admin
-    return if current_user.role == Settings.role.admin
+    return if current_user.is_admin?
     redirect_to static_pages_home_url
   end
 
