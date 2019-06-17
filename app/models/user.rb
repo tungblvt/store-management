@@ -50,11 +50,11 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    role == Settings.role.admin
+    User.roles[role] == Settings.role.admin.to_i
   end
 
   def is_manager?
-    role == Settings.role.manager
+    User.roles[role] == Settings.role.manager.to_i
   end
 
   def image_size
