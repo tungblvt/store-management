@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_075320) do
     t.text "description"
     t.string "price"
     t.string "image"
-    t.string "status"
+    t.string "boolean", default: "1"
     t.boolean "is_deleted", default: false
     t.bigint "category_id"
     t.datetime "created_at", null: false

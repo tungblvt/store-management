@@ -7,11 +7,10 @@
     <div class="name-store"><%= @store.name %></div>
     <div class="address-store"><%= @store.address %></div>
     <div class="status-store">
-      <div class="status-store-title"><%= t "store.status" %></div>
+      <div class="status-store-title"><%= t "store.status" %>:&nbsp;</div>
       <% if @store.status? %>
         <span class="store-open"> <%= t "store.opening" %></span>
-      <% end %>
-      <% unless @store.status? %>
+      <% else %>
         <span class="store-close"> <%= t "store.closing" %></span>
       <% end %>
     </div>
@@ -20,10 +19,17 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add_category"><i class="fa fa-plus" aria-hidden="true"></i><span><%= t "store.add_new_category" %></span></button>
   </div>
+  <div class="col-md-6">
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalProduct">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      <span><%= t "store.add_new_product" %></span>
+    </button>
+  </div>
 </div>
+
 <div id="add_category" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -36,6 +42,23 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"><%= t "modal.Close" %>></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modalProduct" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= t "store.add" %></h4>
+      </div>
+      <div class="modal-body">
+        <%= render"products/form" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t "close" %></button>
       </div>
     </div>
   </div>

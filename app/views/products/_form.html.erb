@@ -1,0 +1,25 @@
+<%= form_for @product do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="form-group">
+    <%= f.label :category_id %>
+    <%= f.select :category_id, options_for_select(@categories.map { |cat| [cat.name, cat.id]}), {}, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control", placeholder: t("product.enter_name") %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "form-control", placeholder: t("product.description") %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.text_field :price, class: "form-control", placeholder: t("product.price") %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, accept: "image/png,image/gif,image/jpeg" %>
+  </div>
+  <%= button_tag t("store.add_new_store"), type: "submit", class: "btn btn-primary" %>
+  <%= button_tag t("store.reset"), type: "reset", class: "btn btn-default" %>
+<% end %>

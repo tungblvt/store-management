@@ -45,6 +45,8 @@ class StoresController < AdminsController
 
   def show
     @category = Category.new
+    @categories = @store.categories
+    @product = Product.new
   end
 
   def destroy

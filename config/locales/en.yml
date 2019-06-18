@@ -5,6 +5,7 @@ en:
   website: "Website"
   home: "Home"
   sure: "Are you sure"
+  close: "Close"
   auth:
     p_login: "Please login!"
     login_success: "Login successful!"
@@ -82,6 +83,11 @@ en:
     destroy_fail: "Delete fail!"
     validate_image_size: "Image should be less than 5MB"
     no_permission: "You don't have permission"
+    add_new_category: "Add new category"
+    add_new_product: "Add new product"
+    status: "Status"
+    opening: "Opening"
+    closing: "Closing"
   user:
     validate_image_size: "Image should be less than 5MB"
     status: "Status: "
@@ -104,3 +110,13 @@ en:
     add_new_category: "Add new category"
   modal:
     Close: "Close"
+  product:
+    title: "Product"
+    name: "Name"
+    enter_name: "Enter product's name"
+    description: "Description"
+    enter_description: "Enter description"
+    price: "Price"
+    enter_price: "Enter price"
+    add: "Add"
+    create_success: "Create success!"
