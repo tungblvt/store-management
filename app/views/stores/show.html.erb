@@ -29,7 +29,26 @@
     </button>
   </div>
 </div>
-
+<div class="row">
+  <div class="col-md-3">
+    <hr>
+    <ul class="list-category">
+      <% @categories.each do |category| %>
+        <li class="item"><%= link_to category.name, categories_path(category) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-9">
+    <hr>
+    <% @categories.each do |category| %>
+      <div class="list-product" id="category_<%= category.id %>">
+        <% category.products.each do |product| %>
+          <%= link_to product.name, product %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
 <div id="add_category" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">

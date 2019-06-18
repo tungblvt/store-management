@@ -49,6 +49,7 @@ en:
     manager_users: "Manager Users"
     manager_stores: "Manager Stores"
     manager_products: "Manager Products"
+    manager_categories: "Manager Categories"
   header:
     name: "secondtruth"
     user_profile: "User Profile"
@@ -108,6 +109,15 @@ en:
     enter_description: "Enter description"
     enter_name: "Enter name"
     add_new_category: "Add new category"
+    list_categories: "List categories"
+    Name: "Name"
+    Store: "Store"
+    Action: "Action"
+    Delete: "Delete"
+    are_you_sure: "Are you sure?"
+    create_success: "Create category success"
+    delete_success: "Delete category success"
+    some_thing_was_wrong: "Something was wrong!"
   modal:
     Close: "Close"
   product:

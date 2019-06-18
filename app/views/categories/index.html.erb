@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= provide :title, t("category.list_categories") %>
+    <h1><%= t "category.list_categories" %></h1>
+    <table class="table-hover table list-users">
+      <tr>
+        <th><%= t "category.Name" %></th>
+        <th><%= t "category.Store" %></th>
+        <th><%= t "category.Action" %></th>
+      </tr>
+      <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= category.store_name %></td>
+        <td>
+          <%= link_to t("category.Delete"), category, method: :delete, data:{ confirm: t("category.are_you_sure")} %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
