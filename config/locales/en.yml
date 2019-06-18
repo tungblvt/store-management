@@ -132,3 +132,5 @@ en:
     enter_price: "Enter price"
     add: "Add"
     create_success: "Create success!"
+    delete_success: "Delete category success"
+    some_thing_was_wrong: "Something was wrong!"

@@ -18,6 +18,7 @@ category_per_page: 10
 row_text_area_descriprion: 20
 img_store_default: "https://encrypted-tbn0.gstatic.com/
   images?q=tbn:ANd9GcT6VAJ9V6-_KySj4-3LCTe5rlDPEjcZ_lNEZHGapiygyQTepvI4"
+image_product_small: "50x50"
 role:
   admin: "0"
   manager: "1"

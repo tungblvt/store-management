@@ -34,7 +34,7 @@
     <hr>
     <ul class="list-category">
       <% @categories.each do |category| %>
-        <li class="item"><%= link_to category.name, categories_path(category) %></li>
+        <li class="item"><%= link_to category.name, "#{request.original_url}#category_#{category.id}" %></li>
       <% end %>
     </ul>
   </div>
@@ -42,10 +42,42 @@
     <hr>
     <% @categories.each do |category| %>
       <div class="list-product" id="category_<%= category.id %>">
-        <% category.products.each do |product| %>
-          <%= link_to product.name, product %>
-        <% end %>
-      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h3><%= category.name %></h3>
+          </div>
+          <hr>
+        </div>
+        <div class="row">
+          <% category.products.each do |product| %>
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-2 product-image">
+                  <%= image_tag product.image.url, :size => Settings.image_product_small if product.image? %>
+                </div>
+                <div class="col-md-7">
+                  <%= product.name %>
+                </div>
+                <div class="col-md-1">
+                  <%= number_to_currency(product.price, locale: :vi) %>
+                </div>
+                <div class="col-md-1">
+                  <%= link_to edit_product_path(product) do %>
+                    <i class="fa fa-pencil fa-fw fa-update"></i>
+                  <% end %>
+                </div>
+                <div class="col-md-1">
+                  <%= link_to product, method: :delete, data: {confirm: t("sure")} do %>
+                    <i class="fa fa-trash-o fa-fw fa-delete"></i>
+                  <% end %>
+                </div>
+              </div>
+              <br>
+            </div>
+            <hr>
+          <% end %>
+        </div>
+        </div>
     <% end %>
   </div>
 </div>
