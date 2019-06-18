@@ -1,5 +1,5 @@
 class CategoriesController < AdminsController
-  before_action :load_category, only: %i(destroy)
+  before_action :load_category, only: %i(edit update destroy)
 
   def index
     @categories = Category.page(params[:page]).per(Settings.category_per_page)
@@ -15,6 +15,19 @@ class CategoriesController < AdminsController
       redirect_to stores_url
     else
       render :new
+    end
+  end
+
+  def edit
+    @stores = Store.store_id_and_name
+  end
+
+  def update
+    if @category.update category_params
+      flash[:success] = t "category.update_successfully"
+      redirect_to edit_category_url
+    else
+      render :edit
     end
   end
 
