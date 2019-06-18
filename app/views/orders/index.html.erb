@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= provide :title, t("orders.list_order") %>
+    <h1><%= t "orders.list_order" %></h1>
+    <table class="table-hover table list-users">
+      <tr>
+        <th><%= t "orders.Name" %></th>
+        <th><%= t "orders.Status" %></th>
+        <th><%= t "orders.Shipped_Date" %></th>
+        <th><%= t "orders.Created_Date" %></th>
+        <th><%= t "orders.Action" %></th>
+      </tr>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.user_name %></td>
+          <td><%= order.status %></td>
+          <td><%= order.shipped_date %></td>
+          <td><%= order.created_at %></td>
+          <td>
+            <%= link_to edit_order_path(order) do %>
+              <i class="fa fa-pencil fa-fw fa-update"></i>
+            <% end %>
+            <%= link_to order, method: :delete, data:{ confirm: t("orders.are_you_sure")} do %>
+              <i class="fa fa-trash-o fa-fw fa-delete"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

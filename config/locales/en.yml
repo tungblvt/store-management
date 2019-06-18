@@ -50,6 +50,7 @@ en:
     manager_stores: "Manager Stores"
     manager_products: "Manager Products"
     manager_categories: "Manager Categories"
+    manager_orders: "Manager Orders"
   header:
     name: "secondtruth"
     user_profile: "User Profile"
@@ -134,3 +135,11 @@ en:
     create_success: "Create success!"
     delete_success: "Delete category success"
     some_thing_was_wrong: "Something was wrong!"
+  orders:
+    list_order: "List Orders"
+    Name: "Name"
+    Status: "Status"
+    Action: "Action"
+    Shipped_Date: "Shipped Date"
+    Created_Date: "Created Date"
+    are_you_sure: "Are you sure?"
