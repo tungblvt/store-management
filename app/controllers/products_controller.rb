@@ -1,6 +1,6 @@
-class ProductsController < ApplicationController
-  before_action :logged_in_user, only: %i(new create edit)
-  before_action :load_product, only: %i(edit destroy)
+class ProductsController < AdminsController
+  before_action :logged_in_user
+  before_action :load_product, except: %i(new create)
 
   def new; end
 
@@ -14,7 +14,24 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @store = Store.find_by id: params[:store_id];
+    if @store
+      @categories = @store.categories
+    else
+      flash[:danger] = t "product.cant_find_store"
+      redirect_to stores_path
+    end
+  end
+
+  def update
+    if @product.update product_params
+      flash[:success] = t "product.update_successfully"
+      redirect_to stores_path
+    else
+      render :edit
+    end
+  end
 
   def destroy
     if @product.destroy
