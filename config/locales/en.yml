@@ -114,10 +114,12 @@ en:
     Store: "Store"
     Action: "Action"
     Delete: "Delete"
+    Edit: "Edit"
     are_you_sure: "Are you sure?"
     create_success: "Create category success"
     delete_success: "Delete category success"
     some_thing_was_wrong: "Something was wrong!"
+    update_successfully: "Update successfully"
   modal:
     Close: "Close"
   product:

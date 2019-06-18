@@ -13,7 +13,12 @@
         <td><%= category.name %></td>
         <td><%= category.store_name %></td>
         <td>
-          <%= link_to t("category.Delete"), category, method: :delete, data:{ confirm: t("category.are_you_sure")} %>
+          <%= link_to edit_category_path(category) do %>
+            <i class="fa fa-pencil fa-fw fa-update"></i>
+          <% end %>
+          <%= link_to category, method: :delete, data:{ confirm: t("category.are_you_sure")} do %>
+            <i class="fa fa-trash-o fa-fw fa-delete"></i>
+          <% end %>
         </td>
       </tr>
       <% end %>
