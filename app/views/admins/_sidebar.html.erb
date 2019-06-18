@@ -14,18 +14,23 @@
       <% if current_user.is_admin? %>
         <li>
           <%= link_to "#" do %>
-           <i class='fa fa-dashboard fa-fw'></i> <%= t "header.user_profile" %>
+           <i class="fa fa-dashboard fa-fw"></i> <%= t "header.user_profile" %>
           <% end %>
         </li>
       <% end %>
       <li>
         <%= link_to stores_path do %>
-          <i class='fa fa-table fa-fw'></i> <%= t "side_bar.manager_stores" %>
+          <i class="fa fa-table fa-fw"></i> <%= t "side_bar.manager_stores" %>
         <% end %>
       </li>
       <li>
         <%= link_to "#" do %>
-          <i class='fa fa-edit fa-fw'></i> <%= t "side_bar.manager_products" %>
+          <i class="fa fa-edit fa-fw"></i> <%= t "side_bar.manager_products" %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to categories_path do %>
+          <i class="fa fa-edit fa-fw"></i> <%= t "side_bar.manager_categories" %>
         <% end %>
       </li>
     </ul>
