@@ -1,0 +1,24 @@
+<%= form_for @category do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control", placeholder: t("category.enter_name") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "form-control", placeholder: t("category.enter_description") %>
+  </div>
+
+  <% if @stores %>
+  <div class="form-group">
+    <%= f.label :store_id %>
+    <%= f.select :store_id, options_for_select(@stores.map{ |c| [c.name, c.id]}, selected: @category.store_id), {}, class: "form-control" %>
+  </div>
+  <% end %>
+  <% unless @category.id %>
+    <%= f.text_field :store_id, type: "hidden", value: @store.id %>
+  <% end %>
+  <%= button_tag t("category.add_new_category"), type: "submit", class: "btn btn-primary" %>
+  <%= button_tag t("store.reset"), type: "reset", class: "btn btn-default" %>
+<% end %>

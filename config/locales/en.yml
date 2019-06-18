@@ -96,3 +96,11 @@ en:
     Address: "Address"
     Phone: "Phone"
     List_users: "List users"
+  category:
+    title: "Category"
+    add: "Add"
+    enter_description: "Enter description"
+    enter_name: "Enter name"
+    add_new_category: "Add new category"
+  modal:
+    Close: "Close"
