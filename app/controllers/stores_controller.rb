@@ -43,7 +43,9 @@ class StoresController < AdminsController
     end
   end
 
-  def show; end
+  def show
+    @category = Category.new
+  end
 
   def destroy
     if @store.destroy
