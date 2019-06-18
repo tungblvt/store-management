@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.text :description
       t.string :price
       t.string :image
-      t.string :status
+      t.string :boolean, :default => true
       t.boolean :is_deleted, :default => false
       t.references :category, foreign_key: true
 

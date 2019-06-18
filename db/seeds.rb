@@ -45,3 +45,11 @@ Store.create! name: "store name",
               description: "description",
               image: "image",
               user_id: 1
+
+Category.create! name: "Category",
+                 description: "description",
+                 store_id: 1
+
+Category.create! name: "Category1",
+                 description: "description",
+                 store_id: 1

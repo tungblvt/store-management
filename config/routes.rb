@@ -9,11 +9,12 @@ Rails.application.routes.draw do
   scope :admin do
     get "home-admin", to: "admins#home"
 
-    resources :stores
-    resources :users
-    resources :categories
-
     post "/unlock-store", to: "stores#unlock"
     post "/lock-store", to: "stores#lock"
+
+    resources :stores
+    resources :products
+    resources :users
+    resources :categories
   end
 end
