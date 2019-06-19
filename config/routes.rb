@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get "/login", to:"sessions#new"
   get "static_pages/index"
+  get "/search", to:"stores#search"
 
   post "/login", to:"sessions#create"
 

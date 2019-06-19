@@ -1,4 +1,6 @@
 class StoresController < AdminsController
+  layout :resolve_layout
+
   before_action :logged_in_user, except: :list
   before_action :correct_user, only: %i(edit update destroy)
   before_action :load_store, only: %i(show edit update destroy)
@@ -80,6 +82,12 @@ class StoresController < AdminsController
     end
   end
 
+  def search
+    @products = Product.search(params[:keyword])
+      .page(params[:page]).per(Settings.product_per_page)
+      .order_by_column :price
+  end
+
   private
 
   def load_store
@@ -95,5 +103,16 @@ class StoresController < AdminsController
   def correct_user
     @store = current_user.stores.find_by(id: params[:id])
     redirect_to home_admin_path if @store.nil?
+  end
+
+  def resolve_layout
+    case action_name
+    when "search"
+      "application"
+    when "index"
+      "admin"
+    else
+      "application"
+    end
   end
 end

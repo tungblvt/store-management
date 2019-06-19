@@ -2,7 +2,7 @@
   <% @stores.each do |store| %>
     <div class="col-md-4 store-home-item">
       <%= link_to store_path(store) do %>
-        <%= image_tag store.image.url if store.image? %>
+        <%= image_tag store.image.url, class: "w-100" if store.image? %>
         <p class="store-name"><%= store.name %></p>
         <p class="store-address"><%= store.address %></p>
       <% end %>

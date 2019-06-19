@@ -1,7 +1,8 @@
 @import 'colors';
 
-.navbar {
+body .navbar {
   height: 60px;
+  border-radius: 0;
 }
 .body-home-page {
   margin: 10px 20px !important;
@@ -42,4 +43,23 @@
 }
 .row {
   margin: 0 !important;
+}
+
+.search-area {
+  .form-group {
+    display: flex;
+    input[type="text"] {
+      flex: 1;
+      flex-basis: 80%;
+      width: 100%;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+    button {
+      margin-left: 5px;
+      flex: 1;
+      flex-basis: 20%;
+      width: 100%;
+    }
+  }
 }
