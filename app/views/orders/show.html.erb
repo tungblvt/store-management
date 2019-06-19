@@ -1,0 +1,61 @@
+<%= provide :title, t("orders.Show") %>
+<div class="row">
+  <div class="col-md-12">
+    <h1><%= t "orders.Order_info" %></h1>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <b><%= t "orders.StoreName" %>:</b>
+      <span><%= @order.store_name %></span>
+    </p>
+    <p>
+      <b><%= t "orders.Status" %>:</b>
+      <span><%= @order.status %></span>
+    </p>
+  </div>
+  <div class="col-md-6">
+    <p>
+      <b><%= t "orders.Name" %>:</b>
+      <span><%= @order.user_name %></span>
+    </p>
+    <p>
+      <b><%= t "orders.Shipped_Date" %>:</b>
+      <span><%= @order.shipped_date %></span>
+    </p>
+  </div>
+  <div class="col-md-6">
+    <p>
+      <b><%= t "orders.Address" %>:</b>
+      <span><%= @order.address %></span>
+    </p>
+    <p>
+      <b><%= t "orders.Created_Date" %>:</b>
+      <span><%= @order.created_at %></span>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10">
+    <h3><%= t "orders.Order_detail" %></h3>
+    <table class="table-hover table list-order-details">
+      <tr>
+        <th><%= t "orders.Product_Name" %></th>
+        <th><%= t "orders.Quantity" %></th>
+        <th><%= t "orders.Price" %></th>
+      </tr>
+      <% @order_details.each do |order_detail| %>
+        <tr>
+          <td><%= order_detail.product_name %></td>
+          <td><%= order_detail.quantity %></td>
+          <td><%= number_to_currency(order_detail.price, locale: :vi) %></td>
+        </tr>
+      <% end %>
+    </table>
+    <p class="text-right">
+      <b><%= t "orders.Total" %>: <%= number_to_currency get_total_money(@order_details), locale: :vi %></b>
+    </p>
+  </div>
+</div>
