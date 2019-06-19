@@ -62,7 +62,7 @@
                   <%= number_to_currency(product.price, locale: :vi) %>
                 </div>
                 <div class="col-md-1">
-                  <%= link_to edit_product_path(product) do %>
+                  <%= link_to edit_product_path(id: product, store_id: @store.id)  do %>
                     <i class="fa fa-pencil fa-fw fa-update"></i>
                   <% end %>
                 </div>
