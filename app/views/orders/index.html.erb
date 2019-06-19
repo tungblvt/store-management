@@ -4,6 +4,7 @@
     <h1><%= t "orders.list_order" %></h1>
     <table class="table-hover table list-users">
       <tr>
+        <th><%= t "orders.StoreName" %></th>
         <th><%= t "orders.Name" %></th>
         <th><%= t "orders.Status" %></th>
         <th><%= t "orders.Shipped_Date" %></th>
@@ -12,6 +13,7 @@
       </tr>
       <% @orders.each do |order| %>
         <tr>
+          <td><%= order.store_name %></td>
           <td><%= order.user_name %></td>
           <td><%= order.status %></td>
           <td><%= order.shipped_date %></td>

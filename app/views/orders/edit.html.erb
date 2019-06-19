@@ -1,0 +1,33 @@
+<%= provide :title, t("orders.Edit") %>
+<%= form_for @order do |f| %>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-6">
+      <div class="title-signup">
+        <h1><%= t "orders.Edit" %></h1>
+      </div>
+      <%= render "shared/error_messages", object: f.object %>
+      <div class="form-group">
+        <%= f.label :status %>
+        <%= f.select :status, options_for_select(get_statuses, selected: get_status_key(@order)), {}, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :name %>
+        <span class="form-control"><%= @order.user_name %></span>
+      </div>
+      <div class="form-group">
+        <%= f.label :store %>
+        <span class="form-control"><%= @order.store_name %></span>
+      </div>
+      <div class="form-group">
+        <%= f.label :address %>
+        <%= f.text_field :address, class: "form-control", placeholder: t("orders.Address") %>
+      </div>
+      <div class="form-group">
+        <%= f.label :shipped_date %>
+        <%= f.date_select :shipped_date,{}, class: "form-control", placeholder: t("orders.Shipped_Date") %>
+      </div>
+
+      <%= f.submit t("orders.Edit"), class: "btn btn-primary signbtn" %>
+    </div>
+  </div>
+<% end %>

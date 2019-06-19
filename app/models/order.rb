@@ -7,5 +7,8 @@ class Order < ApplicationRecord
 
   enum status: %i(pending approved shipped cancel)
 
+  ORDER_PARAMS = %i(store_id user_id status address shipped_date).freeze
+
   delegate :name, to: :user, prefix: true
+  delegate :name, to: :store, prefix: true
 end
