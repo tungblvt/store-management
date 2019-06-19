@@ -1,5 +1,5 @@
 class OrdersController < AdminsController
-  before_action :load_store, only: %i(edit update)
+  before_action :load_store, only: %i(edit update show)
 
   def index
     @orders = Order.includes(:user).references(:users).select("orders.*, users.name as user_name").page(params[:page]).per(Settings.order_per_page)
@@ -7,6 +7,10 @@ class OrdersController < AdminsController
   end
 
   def edit; end
+
+  def show
+    @order_details = Order.joins_order_details_products(@order.id).select_order_detail
+  end
 
   def update
     if @order.update orders_params

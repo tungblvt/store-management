@@ -156,3 +156,10 @@ en:
   home_page:
     cate_title: "Category List"
     all: "All"
+    Product_Name: "Product Name"
+    Quantity: "Quantity"
+    Price: "Price"
+    Show: "Show"
+    Order_detail: "Order detail"
+    Total: "Total"
+    Order_info: "Order info"
