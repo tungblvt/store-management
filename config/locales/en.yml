@@ -92,6 +92,7 @@ en:
     status: "Status"
     opening: "Opening"
     closing: "Closing"
+    add_cart: "Add to your cart"
   user:
     validate_image_size: "Image should be less than 5MB"
     status: "Status: "

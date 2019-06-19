@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-md-5 col-lg-5">
+    <%= image_tag @store.image.url, :size => Settings.image_store_small %>
+  </div>
+  <div class="col-md-6 col-lg-6 store-info">
+    <div class="name-store"><%= @store.name %></div>
+    <div class="address-store"><%= @store.address %></div>
+    <div class="status-store">
+      <div class="status-store-title"><%= t "store.status" %>:&nbsp;</div>
+      <% if @store.status? %>
+        <span class="store-open"> <%= t "store.opening" %></span>
+      <% else %>
+        <span class="store-close"> <%= t "store.closing" %></span>
+      <% end %>
+    </div>
+    <div class="store-short-description"><%= @store.short_description %></div>
+    <div class="store-description"><%= @store.description %></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <hr>
+    <ul class="list-category">
+      <% @categories.each do |category| %>
+        <li class="item"><%= link_to category.name, "#category_#{category.id}" %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-9">
+    <hr>
+    <% @categories.each do |category| %>
+      <div class="list-product" id="category_<%= category.id %>">
+        <div class="row">
+          <div class="col-md-12">
+            <h3><%= category.name %></h3>
+          </div>
+          <hr>
+        </div>
+        <div class="row">
+          <% category.products.each do |product| %>
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-2 product-image">
+                  <%= image_tag product.image.url, :size => Settings.image_product_small %>
+                </div>
+                <div class="col-md-7">
+                  <b><%= product.name %></b>
+                  <br>
+                  <%= product.description %>
+                </div>
+                <div class="col-md-2 product_price">
+                  <%= number_to_currency(product.price, locale: :vi) %>
+                </div>
+                <div class="col-md-1">
+                  <%= link_to "" do %>
+                    <i class="fa fa-plus-circle fa-delete" title = "<%= t "store.add_cart" %>"></i>
+                  <% end %>
+                </div>
+              </div>
+              <br>
+            </div>
+            <hr>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
