@@ -24,3 +24,7 @@ role:
   admin: "0"
   manager: "1"
   member: "2"
+store:
+  limit_home: 9
+category:
+  limit_home: 15
