@@ -1,11 +1,13 @@
 en:
   title: "Store Management"
+  store_title: "Store"
   admin: "Admin"
   manager: "Manager Store"
   website: "Website"
   home: "Home"
   sure: "Are you sure"
   close: "Close"
+  login: "Login"
   auth:
     p_login: "Please login!"
     login_success: "Login successful!"
@@ -151,3 +153,6 @@ en:
     Edit: "Edit"
     Address: "Address"
     update_successfully: "Update successfully"
+  home_page:
+    cate_title: "Category List"
+    all: "All"

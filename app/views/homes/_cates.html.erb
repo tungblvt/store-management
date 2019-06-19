@@ -1,0 +1,10 @@
+<div class="cate-title">
+  <span><%= t "home_page.cate_title" %></span>
+</div>
+<div class="cate-list">
+  <% @categories.each do |cate| %>
+    <div class="btn">
+      <%= link_to cate.name, category_path(cate) %>
+    </div>
+  <% end %>
+</div>

@@ -4,7 +4,9 @@ class Store < ApplicationRecord
   has_many :orders
 
   scope :order_by_column, ->(column){order(column)}
-  scope :store_id_and_name, ->{select :id, :name}
+  scope :select_store_id_and_name_and_address, ->{select :id, :name, :address, :image}
+  scope :store_active, ->{where status: true}
+  scope :store_lock, ->{where is_lock: false}
 
   STORE_PARAMS = %i(name address short_description description image).freeze
 
