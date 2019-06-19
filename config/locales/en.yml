@@ -141,9 +141,13 @@ en:
     cant_find_store: "Can't find store"
   orders:
     list_order: "List Orders"
+    StoreName: "Store Name"
     Name: "Name"
     Status: "Status"
     Action: "Action"
     Shipped_Date: "Shipped Date"
     Created_Date: "Created Date"
     are_you_sure: "Are you sure?"
+    Edit: "Edit"
+    Address: "Address"
+    update_successfully: "Update successfully"
