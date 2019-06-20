@@ -15,7 +15,7 @@ class ProductsController < AdminsController
   end
 
   def edit
-    @store = Store.find_by id: params[:store_id];
+    @store = Store.find_by id: params[:store_id]
     if @store
       @categories = @store.categories
     else

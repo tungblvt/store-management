@@ -2,8 +2,19 @@ class OrdersController < AdminsController
   before_action :load_store, only: %i(edit update show)
 
   def index
-    @orders = Order.includes(:user).references(:users).select("orders.*, users.name as user_name").page(params[:page]).per(Settings.order_per_page)
-      .order_by_column :created_at
+    if current_user.is_admin?
+      @orders = Order.includes(:user).references(:users).select("orders.*, users.name as user_name").page(params[:page]).per(Settings.order_per_page)
+                    .order_by_column :created_at
+      render "orders/index"
+    elsif current_user.is_manager?
+      stores = current_user.stores
+      @orders = Order.IN_stores(stores).includes(:user).references(:users).select("orders.*, users.name as user_name").page(params[:page]).per(Settings.order_per_page)
+                    .order_by_column :created_at
+      render "orders/index"
+    else
+      flash[:danger] = t "store.no_permission"
+      redirect_to static_pages_home_path
+    end
   end
 
   def edit; end
