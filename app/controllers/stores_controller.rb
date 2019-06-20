@@ -1,5 +1,5 @@
 class StoresController < AdminsController
-  layout :resolve_layout
+  layout :dynamic_layout
 
   before_action :logged_in_user, except: :list
   before_action :correct_user, only: %i(edit update destroy)
@@ -49,6 +49,15 @@ class StoresController < AdminsController
     @category = Category.new
     @categories = @store.categories
     @product = Product.new
+  end
+
+  def detail
+    @store = Store.find_by id: params[:id]
+    if @store
+      @categories = @store.categories
+    else
+      render file: "#{Rails.root}/public/404", status: :not_found
+    end
   end
 
   def destroy
@@ -105,14 +114,12 @@ class StoresController < AdminsController
     redirect_to home_admin_path if @store.nil?
   end
 
-  def resolve_layout
+  def dynamic_layout
     case action_name
-    when "search"
+    when "detail", "search"
       "application"
-    when "index"
-      "admin"
     else
-      "application"
+      "admins"
     end
   end
 end

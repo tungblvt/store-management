@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-md-5 col-lg-5">
-    <%= image_tag @store.image.url if @store.image? %>
-    <%= image_tag Settings.img_store_default unless @store.image? %>
+    <%= image_tag @store.image.url %>
   </div>
   <div class="col-md-6 col-lg-6 store-info">
     <div class="name-store"><%= @store.name %></div>
@@ -58,7 +57,7 @@
                 <div class="col-md-7">
                   <%= product.name %>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1 product_price">
                   <%= number_to_currency(product.price, locale: :vi) %>
                 </div>
                 <div class="col-md-1">

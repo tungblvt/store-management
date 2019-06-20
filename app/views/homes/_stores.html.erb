@@ -1,8 +1,8 @@
 <div class="row">
   <% @stores.each do |store| %>
     <div class="col-md-4 store-home-item">
-      <%= link_to store_path(store) do %>
-        <%= image_tag store.image.url, class: "w-100" if store.image? %>
+      <%= link_to store_detail_path(store) do %>
+        <%= image_tag store.image.url, class: "w-100" %>
         <p class="store-name"><%= store.name %></p>
         <p class="store-address"><%= store.address %></p>
       <% end %>
