@@ -2,8 +2,19 @@ class CategoriesController < AdminsController
   before_action :load_category, only: %i(edit update destroy)
 
   def index
-    @categories = Category.page(params[:page]).per(Settings.category_per_page)
-      .order_by_column :name
+    if current_user.is_admin?
+      @categories = Category.page(params[:page]).per(Settings.category_per_page)
+                        .order_by_column :name
+      render "categories/index"
+    elsif current_user.is_manager?
+      @stores = current_user.stores
+      @categories = Category.IN_stores(@stores).page(params[:page]).per(Settings.category_per_page)
+                        .order_by_column :name
+      render "categories/index"
+    else
+      flash[:danger] = t "store.no_permission"
+      redirect_to static_pages_home_path
+    end
   end
 
   def new; end
