@@ -91,12 +91,6 @@ class StoresController < AdminsController
     end
   end
 
-  def search
-    @products = Product.search(params[:keyword])
-      .page(params[:page]).per(Settings.product_per_page)
-      .order_by_column :price
-  end
-
   private
 
   def load_store
