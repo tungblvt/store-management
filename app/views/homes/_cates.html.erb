@@ -12,7 +12,7 @@
 <div class="cate-list">
   <% @categories.each do |cate| %>
     <div class="btn">
-      <%= link_to cate.name, category_path(cate) %>
+      <%= link_to cate.name, search_by_cate_path(cate.id) %>
     </div>
   <% end %>
 </div>
