@@ -1,33 +1,31 @@
-
-  <div class="row">
-    <div class="col-md-12">
-      <h1><%= t "list_users.all_users" %></h1>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <h1><%= t "list_users.all_users" %></h1>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <table class="table-hover table list-users">
-        <tr>
-          <th><%= t "list_users.STT" %></th>
-          <th><%= t "list_users.Avatar" %></th>
-          <th><%= t "list_users.Name" %>></th>
-          <th><%= t "list_users.Role" %></th>
-          <th><%= t "list_users.Action" %></th>
-        </tr>
-        <% stt = 0 %>
-        <% @users.each do |user| %>
-        <tr>
-          <td>#<%= stt+=1 %></td>
-          <td><%= image_tag user.avatar.url if user.avatar? %></td>
-          <td><%= user.name %></td>
-          <td><%= user.role %></td>
-          <td>
-            <%= link_to t("list_users.Edit"), edit_user_path(user)%>
-            <%= link_to t("list_users.Delete"), user, method: :delete, data:{ confirm: t("list_users.are_you_sure")} %>
-          </td>
-        </tr>
-        <% end %>
-      </table>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table-hover table list-users">
+      <tr>
+        <th><%= t "list_users.STT" %></th>
+        <th><%= t "list_users.Avatar" %></th>
+        <th><%= t "list_users.Name" %></th>
+        <th><%= t "list_users.Role" %></th>
+        <th><%= t "list_users.Action" %></th>
+      </tr>
+      <% stt = 0 %>
+      <% @users.each do |user| %><tr>
+      <td><%= stt+=1 %></td>
+      <td><%= image_tag user.avatar.url, size: Settings.image_product_small %></td>
+      <td><%= user.name %></td>
+      <td><%= user.role %></td>
+      <td>
+        <%= link_to t("list_users.Edit"), edit_user_path(user) %>
+        <%= link_to t("list_users.Delete"), user, method: :delete, data:{ confirm: t("list_users.are_you_sure")} %>
+      </td>
+      <% end %>
+    </tr>
+    </table>
     </div>
     <div class="col-12">
       <div class="paginate text-center">
@@ -35,4 +33,4 @@
       </div>
     </div>
 
-  </div>
+</div>

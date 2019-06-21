@@ -12,6 +12,15 @@ input[type=text], input[type=password] {
   display: inline-block;
 }
 
+.checkbox {
+  input[type=checkbox] {
+    margin-left: 0 !important;
+  }
+  span {
+    margin-left: 20px;
+  }
+}
+
 hr {
   border: 1px solid $white-color;
   margin-bottom: 25px;

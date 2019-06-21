@@ -7,14 +7,18 @@
 
 <ul class="nav navbar-nav navbar-left navbar-top-links">
   <li>
-    <%= link_to "#" do %>
+    <%= link_to root_url do %>
       <i class="fa fa-home fa-fw"></i> <%= t "store_title" %>
     <% end %>
   </li>
+  <li class="active cart">
+    <%= render "layouts/cart" %>
+  </li>
 </ul>
 
-<% if logged_in? %>
 <ul class="nav navbar-right navbar-top-links">
+  </li>
+  <% if logged_in? %>
   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
       <i class="fa fa-user fa-fw"></i>
@@ -23,13 +27,8 @@
     </a>
     <ul class="dropdown-menu dropdown-user">
       <li>
-        <%= link_to "#" do %>
+        <%= link_to user_info_path current_user do %>
           <i class="fa fa-user fa-fw"></i> <%= t "header.user_profile" %>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "#" do %>
-          <i class="fa fa-gear fa-fw"></i> <%= t "header.settings" %>
         <% end %>
       </li>
       <li class="divider"></li>
@@ -40,11 +39,10 @@
       </li>
     </ul>
   </li>
-</ul>
-<% else %>
-  <ul class="nav navbar-right navbar-top-links">
+  <% else %>
     <li class="dropdown">
       <%= link_to t("login"), login_path %>
     </li>
-  </ul>
-<% end %>
+    </ul>
+  <% end %>
+</ul>

@@ -1,4 +1,7 @@
 class UsersController < AdminsController
+  layout :dynamic_layout
+
+  before_action :logged_in_user
   before_action :is_admin, only: %i(index destroy)
   before_action :load_user, except: %i(index create)
 
@@ -15,7 +18,7 @@ class UsersController < AdminsController
     @user = User.new user_params
     if @user.save
       flash[:info] = t "auth.sign_up.singup_success"
-      redirect_to static_pages_home_path
+      redirect_to root_path
     else
       render :new
     end
@@ -43,6 +46,10 @@ class UsersController < AdminsController
     end
   end
 
+  def user_info
+    render :show
+  end
+
   private
 
   def user_params
@@ -51,12 +58,21 @@ class UsersController < AdminsController
 
   def is_admin
     return if current_user.is_admin?
-    redirect_to static_pages_home_url
+    redirect_to root_path
   end
 
   def load_user
     @user = User.find_by id: params[:id]
     return if @user
-    redirect_to static_pages_home_path
+    redirect_to root_path
+  end
+
+  def dynamic_layout
+    case action_name
+    when "user_info"
+      "application"
+    else
+      "admins"
+    end
   end
 end

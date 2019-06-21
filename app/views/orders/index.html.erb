@@ -13,7 +13,7 @@
       </tr>
       <% @orders.each do |order| %>
         <tr>
-          <td><%= order.store_name %></td>
+          <td><%= link_to order.store_name, order_path(order) %></td>
           <td><%= order.user_name %></td>
           <td><%= order.status %></td>
           <td><%= order.shipped_date %></td>

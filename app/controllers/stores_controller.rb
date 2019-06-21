@@ -3,7 +3,7 @@ class StoresController < AdminsController
 
   before_action :logged_in_user, except: %i(list detail)
   before_action :correct_user, only: %i(edit update destroy)
-  before_action :load_store, only: %i(show edit update destroy)
+  before_action :load_store, only: %i(show edit update destroy detail)
 
   def index
     if current_user.is_admin?
@@ -16,7 +16,7 @@ class StoresController < AdminsController
       render "stores/list"
     else
       flash[:danger] = t "store.no_permission"
-      redirect_to static_pages_home_path
+      redirect_to root_path
     end
   end
 
@@ -28,7 +28,7 @@ class StoresController < AdminsController
     @store = current_user.stores.build store_params
     if @store.save
       flash[:success] = t "store.create_success"
-      redirect_to stores_url
+      redirect_to stores_path
     else
       render :new
     end
@@ -39,7 +39,7 @@ class StoresController < AdminsController
   def update
     if @store.update store_params
       flash[:success] = t "store.edit_success"
-      redirect_to store_path
+      redirect_to stores_path
     else
       render :edit
     end
@@ -55,6 +55,7 @@ class StoresController < AdminsController
     @store = Store.find_by id: params[:id]
     @comment = Comment.new
     @comments = Store.joins_comments_user(@store.id).select_user_detail
+    @order_detail = current_order.order_details.new
     if @store
       @categories = @store.categories
     else
@@ -107,7 +108,7 @@ class StoresController < AdminsController
 
   def correct_user
     @store = current_user.stores.find_by(id: params[:id])
-    redirect_to home_admin_path if @store.nil?
+    redirect_to home_admin_path if @store.nil? && !current_user.is_admin?
   end
 
   def dynamic_layout

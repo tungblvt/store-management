@@ -8,6 +8,7 @@ en:
   sure: "Are you sure"
   close: "Close"
   login: "Login"
+  item_in_cart: "Items in cart"
   auth:
     p_login: "Please login!"
     login_success: "Login successful!"
@@ -16,7 +17,7 @@ en:
     invalid_email_or_password_combination: "Invalid email/password combination."
     login: "Login"
     forgot_password_link: ""
-    remember_me_on_this_computer: ""
+    remember_me_on_this_computer: "Remember me on this computer"
     new_user: "New user?"
     sign_up_now: "Sign up now"
     sign_up:
@@ -58,6 +59,7 @@ en:
     user_profile: "User Profile"
     settings: "Settings"
     logout: "Logout"
+    manager_users: "Manager Users"
   footer:
     title: "Footer"
   store:
@@ -93,6 +95,7 @@ en:
     opening: "Opening"
     closing: "Closing"
     add_cart: "Add to your cart"
+    confirm: "Confirm"
   user:
     validate_image_size: "Image should be less than 5MB"
     status: "Status: "
@@ -167,6 +170,20 @@ en:
     Edit: "Edit"
     Address: "Address"
     update_successfully: "Update successfully"
+    no_items: "You don't have product in cart"
+    new_order: "New Order"
+    checkout: "Checkout"
+    total_price: "Total price"
+    delete: "Delete"
+    upgrate_quantity: "Upgrate Quantity"
+    hi: "Hi"
+    you_have_a_new_order: "You have a new order"
+    order: "Order"
+    confirm: "Confirm"
+    price: "Price"
+    noti_send_mail: "Order success.A email has been sent to admin"
+    info: "Order Info"
+    can_not_order: "You can't order"
   home_page:
     cate_title: "Category List"
     all: "All"

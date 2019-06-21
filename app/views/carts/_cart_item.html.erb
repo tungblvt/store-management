@@ -1,0 +1,40 @@
+<% if @order_details.size > 0 %>
+  <div class="container box-signup">
+    <% @order_details.each do |item| %>
+      <div class="well">
+        <div class="row">
+          <div class="col-sm-7">
+            <h3><%= item.product.name %></h3>
+          </div>
+          <div class="col-sm-5">
+            <div class="pull-right">
+              <%= form_for(item, remote: true) do |f| %>
+                <%= f.hidden_field :product_id, value: item.product.id %>
+                <h5><%= number_to_currency item.price, locale: :vi %></h5>
+                <div class="form-group">
+                  <%= f.text_field :quantity, value: item.quantity.to_i, min: 1, class: "form-control" %>
+                </div>
+                <div class="btn-group">
+                  <%= f.submit t("orders.upgrate_quantity"), class: "btn btn-primary" %>
+                  <%= link_to t("orders.delete"), item, method: :delete, remote: true, class: "btn btn-danger" %>
+                </div>
+                <span>Price: <%= number_to_currency item.total, locale: :vi %></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="row pull-right">
+      <h3><b><%= t "orders.total_price" %>: <%= number_to_currency get_total_money(@order_details), locale: :vi %></b></h3>
+    </div>
+    <br><br>
+    <div class="checkout row">
+      <%= link_to t("orders.checkout"), checkout_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+<% else %>
+  <div class="container box-signup">
+    <span><%= t "orders.no_items" %></span>
+  </div>
+<% end %>

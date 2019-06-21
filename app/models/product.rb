@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   scope :order_by_column, ->(column){order(column)}
   scope :search, ->(keyword){where 'products.name LIKE ?', "%#{keyword}%"}
   scope :in_categories, ->(arr_cate_id){where category_id: arr_cate_id}
+  scope :product_available, ->{where status: 1}
 
   PRODUCT_PARAMS = %i(category_id name description price image status).freeze
 

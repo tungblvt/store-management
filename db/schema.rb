@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_075320) do
   create_table "order_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "quantity"
     t.string "price"
+    t.string "total"
     t.bigint "order_id"
     t.bigint "product_id"
     t.datetime "created_at", null: false
@@ -46,8 +47,9 @@ ActiveRecord::Schema.define(version: 2019_06_13_075320) do
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "shipped_date"
+    t.string "subtotal"
     t.bigint "user_id"
     t.bigint "store_id"
     t.datetime "created_at", null: false
@@ -74,7 +76,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_075320) do
     t.string "short_description"
     t.text "description"
     t.string "address"
-    t.boolean "status", default: true
+    t.integer "status", default: 1
     t.boolean "is_lock", default: false
     t.string "image"
     t.bigint "user_id"
