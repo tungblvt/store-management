@@ -1,0 +1,44 @@
+<%= provide :title, t("category.title") %>
+<div class="row">
+  <div class="col-md-6 col-lg-6 store-info">
+    <h1><%= t "category.title" %></h1>
+    <%= link_to t("category.Edit"), edit_category_path(@category), class: "btn btn-primary" %>
+    <div class="name-category">
+      <b><%= t "category.Name" %></b>: <%= @category.name %>
+    </div>
+    <div class="store-category">
+      <b><%= t "category.Store" %></b>: <%= @category.store.name %>
+    </div>
+    <div class="category-description">
+      <b><%= t "category.Description" %></b>: <%= @category.description %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h3><%= t "product.title" %></h3>
+    <table class="table">
+      <tr>
+        <th><%= t "product.name" %></th>
+        <th><%= t "product.image" %></th>
+        <th><%= t "product.price" %></th>
+        <th><%= t "product.action" %></th>
+      </tr>
+      <% @category.products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= image_tag product.image.url %></td>
+        <td><%= number_to_currency product.price, locale: :vi %></td>
+        <td>
+          <%= link_to edit_product_path(product) do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+          <%= link_to product, method: :delete, data:{ confirm: t("product.are_you_sure")} do %>
+            <i class="fa fa-trash-o fa-fw fa-delete"></i>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

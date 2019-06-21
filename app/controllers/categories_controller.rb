@@ -1,5 +1,5 @@
 class CategoriesController < AdminsController
-  before_action :load_category, only: %i(edit update destroy)
+  before_action :load_category, only: %i(edit update destroy show)
 
   def index
     if current_user.is_admin?
@@ -17,7 +17,9 @@ class CategoriesController < AdminsController
     end
   end
 
-  def new; end
+  def new
+    @category = Category.new
+  end
 
   def create
     @category = Category.new category_params
@@ -29,9 +31,9 @@ class CategoriesController < AdminsController
     end
   end
 
-  def edit
-    @stores = Store.store_id_and_name
-  end
+  def show; end
+
+  def edit; end
 
   def update
     if @category.update category_params

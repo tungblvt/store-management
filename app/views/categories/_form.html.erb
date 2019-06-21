@@ -10,15 +10,10 @@
     <%= f.text_field :description, class: "form-control", placeholder: t("category.enter_description") %>
   </div>
 
-  <% if @stores %>
   <div class="form-group">
     <%= f.label :store_id %>
-    <%= f.select :store_id, options_for_select(@stores.map{ |c| [c.name, c.id]}, selected: @category.store_id), {}, class: "form-control" %>
+    <%= f.select :store_id, options_for_select(stores_option_for_select, selected: @category.store_id), {}, class: "form-control" %>
   </div>
-  <% end %>
-  <% unless @category.id %>
-    <%= f.text_field :store_id, type: "hidden", value: @store.id %>
-  <% end %>
-  <%= button_tag t("category.add_new_category"), type: "submit", class: "btn btn-primary" %>
+  <%= button_tag t("category.submit"), type: "submit", class: "btn btn-primary" %>
   <%= button_tag t("store.reset"), type: "reset", class: "btn btn-default" %>
 <% end %>

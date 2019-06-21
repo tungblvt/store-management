@@ -9,5 +9,8 @@ class Category < ApplicationRecord
 
   CATEGORY_PARAMS = %i(name description store_id).freeze
 
+  validates :name, presence: true
+  validates :store_id, presence: true
+
   delegate :name, to: :store, prefix: true
 end

@@ -18,98 +18,12 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6">
-    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add_category"><i class="fa fa-plus" aria-hidden="true"></i><span><%= t "store.add_new_category" %></span></button>
-  </div>
-  <div class="col-md-6">
-    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalProduct">
-      <i class="fa fa-plus" aria-hidden="true"></i>
-      <span><%= t "store.add_new_product" %></span>
-    </button>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-3">
-    <hr>
+  <div class="col-md-12">
+    <h3><%= t "category.list_categories" %></h3>
     <ul class="list-category">
       <% @categories.each do |category| %>
-        <li class="item"><%= link_to category.name, "#{request.original_url}#category_#{category.id}" %></li>
+        <li class="item"><%= link_to category.name, category_path(category) %></li>
       <% end %>
     </ul>
-  </div>
-  <div class="col-md-9">
-    <hr>
-    <% @categories.each do |category| %>
-      <div class="list-product" id="category_<%= category.id %>">
-        <div class="row">
-          <div class="col-md-12">
-            <h3><%= category.name %></h3>
-          </div>
-          <hr>
-        </div>
-        <div class="row">
-          <% category.products.each do |product| %>
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-2 product-image">
-                  <%= image_tag product.image.url, :size => Settings.image_product_small if product.image? %>
-                </div>
-                <div class="col-md-7">
-                  <%= product.name %>
-                </div>
-                <div class="col-md-1 product_price">
-                  <%= number_to_currency(product.price, locale: :vi) %>
-                </div>
-                <div class="col-md-1">
-                  <%= link_to edit_product_path(id: product, store_id: @store.id)  do %>
-                    <i class="fa fa-pencil fa-fw fa-update"></i>
-                  <% end %>
-                </div>
-                <div class="col-md-1">
-                  <%= link_to product, method: :delete, data: {confirm: t("sure")} do %>
-                    <i class="fa fa-trash-o fa-fw fa-delete"></i>
-                  <% end %>
-                </div>
-              </div>
-              <br>
-            </div>
-            <hr>
-          <% end %>
-        </div>
-        </div>
-    <% end %>
-  </div>
-</div>
-<div id="add_category" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><%= t "category.add_new_category" %></h4>
-      </div>
-      <div class="modal-body">
-        <%= render "categories/form" %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t "modal.Close" %></button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="modalProduct" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><%= t "store.add" %></h4>
-      </div>
-      <div class="modal-body">
-        <%= render"products/form" %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t "close" %></button>
-      </div>
-    </div>
   </div>
 </div>
