@@ -171,3 +171,10 @@ en:
     Order_info: "Order info"
     Enter_Keyword: "Enter Keyword ..."
     Search_for: "Search for"
+  comments:
+    Comments: "Comments"
+    content: "content"
+    submit: "Submit"
+    Rating: "Rating"
+    success: "success"
+    failed: "failed"

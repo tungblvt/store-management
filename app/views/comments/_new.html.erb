@@ -1,0 +1,17 @@
+<%= form_for @comment do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <label><%= t "comments.Rating" %></label>
+  <span class="rating">
+    <i class="fa fa-star" data-rate="1"></i>
+    <i class="fa fa-star" data-rate="2"></i>
+    <i class="fa fa-star" data-rate="3"></i>
+    <i class="fa fa-star" data-rate="4"></i>
+    <i class="fa fa-star" data-rate="5"></i>
+    <%= f.hidden_field :rate, value: 0 %>
+    <%= f.hidden_field :store_id, value: @store.id if @store %>
+  </span>
+  <div class="form-group">
+    <%= f.text_field :content, class: "form-control", :placeholder => "#{t("comments.content")}" %>
+    <%= button_tag t("comments.submit"), type: "submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

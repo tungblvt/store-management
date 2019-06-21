@@ -2,11 +2,14 @@ class Store < ApplicationRecord
   belongs_to :user
   has_many :categories
   has_many :orders
+  has_many :comments
 
   scope :order_by_column, ->(column){order(column)}
   scope :select_store_id_and_name_and_address, ->{select :id, :name, :address, :image}
   scope :store_active, ->{where status: true}
   scope :store_lock, ->{where is_lock: false}
+  scope :joins_comments_user, ->(store_id){joins(comments: [:user]).where id: store_id}
+  scope :select_user_detail, ->{select "comments.*, users.name as user_name, users.avatar as user_avatar"}
 
   STORE_PARAMS = %i(name address short_description description image).freeze
 

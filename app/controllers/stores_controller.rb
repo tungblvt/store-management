@@ -1,7 +1,7 @@
 class StoresController < AdminsController
   layout :dynamic_layout
 
-  before_action :logged_in_user, except: :list
+  before_action :logged_in_user, except: %i(list detail)
   before_action :correct_user, only: %i(edit update destroy)
   before_action :load_store, only: %i(show edit update destroy)
 
@@ -53,6 +53,8 @@ class StoresController < AdminsController
 
   def detail
     @store = Store.find_by id: params[:id]
+    @comment = Comment.new
+    @comments = Store.joins_comments_user(@store.id).select_user_detail
     if @store
       @categories = @store.categories
     else
