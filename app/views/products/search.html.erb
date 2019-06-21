@@ -1,13 +1,19 @@
 <div class="row">
   <div class="col-md-12">
-    <h1><%= t "home_page.Search_for" %>: <%= params[:keyword] %></h1>
+    <h1>
+      <% if @category %>
+        <%= t "category.title" %>: <%= @category.name %>
+      <% else %>
+        <%= t "home_page.Search_for" %>: <%= params[:keyword] %>
+      <% end %>
+    </h1>
   </div>
 </div>
 <div class="row list-products">
   <% @products.each do |product| %>
   <div class="col-md-3 product">
     <div class="inner-product">
-      <%= image_tag product.image.url if product.image? %>
+      <%= image_tag product.image.url, class: "w-100" %>
       <h4 class="title"><%= product.name %></h4>
       <span class="price"><%= number_to_currency product.price, locale: :vi %></span>
       <span class="rating">
@@ -21,4 +27,5 @@
     </div>
   </div>
   <% end %>
+  <%= paginate @products %>
 </div>
