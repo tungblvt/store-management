@@ -12,6 +12,7 @@ validates:
     short_description_max: 140
   user:
     image_size: 5
+  number: !ruby/regexp /\A\d+\z/
 user_per_page: 5
 store_per_page: 20
 category_per_page: 10

@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= provide :title, t("product.list_product") %>
+    <h1><%= t "product.list_product" %></h1>
+    <table class="table-hover table list-users">
+      <tr>
+        <th><%= t "product.image" %></th>
+        <th><%= t "product.name" %></th>
+        <th><%= t "product.description" %></th>
+        <th><%= t "product.price" %></th>
+        <th><%= t "product.store" %></th>
+        <th><%= t "product.category" %></th>
+        <th><%= t "product.status" %></th>
+        <th><%= t "category.Action" %></th>
+      </tr>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= image_tag product.image.url, size: Settings.image_product_small  %></td>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td><%= number_to_currency(product.price, locale: :vi) %>
+          </td>
+          <td><%= product.store.name %></td>
+          <td><%= product.category_name %></td>
+          <td>
+            <% if product.available? %>
+              <span class="store-open"> <%= t "product.in_stock" %></span>
+            <% else %>
+              <span class="store-close"> <%= t "product.out_of_stock" %></span>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to edit_product_path(product) do %>
+              <i class="fa fa-pencil fa-fw fa-update"></i>
+            <% end %>
+            <%= link_to product, method: :delete, data:{ confirm: t("category.are_you_sure")} do %>
+              <i class="fa fa-trash-o fa-fw fa-delete"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <%= paginate @products %>
+    </table>
+    <div>
+      <%= link_to new_product_path do %>
+        <i class="fa fa-plus-circle fa-add-fix" aria-hidden="true" title="<%= t "product.add" %>" ></i>
+      <% end %>
+    </div>
+  </div>
+</div>

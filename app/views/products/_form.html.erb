@@ -2,7 +2,7 @@
   <%= render "shared/error_messages", object: f.object %>
   <div class="form-group">
     <%= f.label :category_id %>
-    <%= f.select :category_id, options_for_select(convert_catagories(@categories), selected: @product.category_id), {}, class: "form-control" %>
+    <%= f.select :category_id, options_for_select(convert_catagories, selected: @product.category_id), {}, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :name %>
@@ -15,6 +15,10 @@
   <div class="form-group">
     <%= f.label :price %>
     <%= f.text_field :price, class: "form-control", placeholder: t("product.price") %>
+  </div>
+  <div class="form-group">
+    <%= f.label :status %>
+    <%= f.select :status, options_for_select(get_statues, selected: get_status_key(@product)), {}, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :image %>
