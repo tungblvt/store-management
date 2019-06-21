@@ -124,6 +124,8 @@ en:
     delete_success: "Delete category success"
     some_thing_was_wrong: "Something was wrong!"
     update_successfully: "Update successfully"
+    submit: "Submit"
+    Description: "Description"
   modal:
     Close: "Close"
   product:
@@ -142,6 +144,9 @@ en:
     confirm: "Confirm"
     update_successfully: "Update successfully"
     cant_find_store: "Can't find store"
+    image: "Image"
+    action: "Action"
+    are_you_sure: "Are you sure?"
   orders:
     list_order: "List Orders"
     StoreName: "Store Name"

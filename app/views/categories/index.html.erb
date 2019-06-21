@@ -2,6 +2,9 @@
   <div class="col-md-12">
     <%= provide :title, t("category.list_categories") %>
     <h1><%= t "category.list_categories" %></h1>
+    <%= link_to new_category_path, class: "btn btn-primary" do %>
+      <i class="fa fa-plus" aria-hidden="true"></i><span><%= t "store.add_new_category" %></span>
+    <% end %>
     <table class="table-hover table list-users">
       <tr>
         <th><%= t "category.Name" %></th>
