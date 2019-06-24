@@ -1,7 +1,7 @@
 <% @comments.each do |comment| %>
 <div class="wrap-comment">
   <span class="wrap-thumb">
-    <%= image_tag comment.user_avatar.url if comment.user_avatar %>
+    <%= image_tag get_avatar_url(comment.user_avatar, comment.user_id), class: "image-comment"%>
   </span>
   <span class="user"><%= comment.user_name %></span>
   <span class="rated">

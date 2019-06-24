@@ -35,3 +35,5 @@ store:
 category:
   limit_home: 15
 stars_number_rate: 5
+user_avatar_path: "/uploads/user/avatar/"
+default_user_avatar_path: "/assets/default.jpg"

@@ -11,7 +11,7 @@ class Store < ApplicationRecord
   scope :store_active, ->{where status: 1}
   scope :store_lock, ->{where is_lock: false}
   scope :joins_comments_user, ->(store_id){joins(comments: [:user]).where id: store_id}
-  scope :select_user_detail, ->{select "comments.*, users.name as user_name, users.avatar as user_avatar"}
+  scope :select_user_detail, ->{select "comments.*,users.id as user_id, users.name as user_name, users.avatar as user_avatar"}
 
   STORE_PARAMS = %i(name address short_description description status image).freeze
 
