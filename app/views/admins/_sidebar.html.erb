@@ -29,6 +29,11 @@
         <% end %>
       </li>
       <li>
+        <%= link_to products_path do %>
+          <i class="fa fa-edit fa-fw"></i> <%= t "side_bar.manager_products" %>
+        <% end %>
+      </li>
+      <li>
         <%= link_to orders_path do %>
           <i class="fa fa-edit fa-fw"></i> <%= t "side_bar.manager_orders" %>
         <% end %>
