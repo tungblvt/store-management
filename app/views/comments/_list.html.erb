@@ -1,0 +1,17 @@
+<% @comments.each do |comment| %>
+<div class="wrap-comment">
+  <span class="wrap-thumb">
+    <%= image_tag comment.user_avatar.url if comment.user_avatar %>
+  </span>
+  <span class="user"><%= comment.user_name %></span>
+  <span class="rated">
+    <% comment.rate.times do %>
+      <i class="fa fa-star active"></i>
+    <% end %>
+    <% (Settings.stars_number_rate - comment.rate).times do %>
+      <i class="fa fa-star"></i>
+    <% end %>
+  </span>
+  <p class="comment-content"><%= comment.content %></p>
+</div>
+<% end %>

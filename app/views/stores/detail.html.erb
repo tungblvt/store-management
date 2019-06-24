@@ -64,5 +64,12 @@
         </div>
       </div>
     <% end %>
+    <h3><%=t "comments.Comments" %></h3>
+    <div class="comment-list">
+      <%= render "comments/list", comments: @comments %>
+    </div>
+    <div class="comment-form">
+      <%= render "comments/new", comment: @comment %>
+    </div>
   </div>
 </div>

@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(version: 2019_06_13_075320) do
     t.text "content"
     t.integer "rate"
     t.bigint "user_id"
-    t.bigint "product_id"
+    t.bigint "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_comments_on_product_id"
+    t.index ["store_id"], name: "index_comments_on_store_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_075320) do
     t.text "description"
     t.string "price"
     t.string "image"
-    t.string "boolean", default: "1"
+    t.boolean "status", default: true
     t.boolean "is_deleted", default: false
     t.bigint "category_id"
     t.datetime "created_at", null: false
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_075320) do
   end
 
   add_foreign_key "categories", "stores"
-  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "stores"
   add_foreign_key "comments", "users"
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "products"
