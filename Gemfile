@@ -20,6 +20,7 @@ gem "kaminari"
 gem "font-awesome-rails"
 gem "carrierwave", "1.2.2"
 gem "mini_magick", "4.7.0"
+gem "figaro"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

@@ -35,7 +35,7 @@
         </td>
         <td><%= store.short_description %></td>
         <td>
-          <% if store.status? %>
+          <% if store.opening? %>
             <span class="store-open"> <%= t "store.opening" %></span>
           <% else %>
             <span class="store-close"> <%= t "store.closing" %></span>

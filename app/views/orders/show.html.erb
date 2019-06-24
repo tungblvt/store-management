@@ -55,7 +55,7 @@
       <% end %>
     </table>
     <p class="text-right">
-      <b><%= t "orders.Total" %>: <%= number_to_currency get_total_money(@order_details), locale: :vi %></b>
+      <b><%= t "orders.Total" %>: <%= number_to_currency @order.subtotal, locale: :vi %></b>
     </p>
   </div>
 </div>

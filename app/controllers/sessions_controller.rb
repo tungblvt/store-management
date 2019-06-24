@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       if user.is_admin? || user.is_manager?
         redirect_to home_admin_path
       else
-        render "static_pages/home"
+        redirect_to root_path
       end
     else
       flash[:danger] = t "auth.invalid_email_or_password_combination"

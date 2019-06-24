@@ -16,7 +16,7 @@
 
 <ul class="nav navbar-nav navbar-left navbar-top-links">
   <li>
-    <%= link_to "#" do %>
+    <%= link_to root_path do %>
       <i class='fa fa-home fa-fw'></i> <%= t "website" %>
     <% end %>
   </li>
@@ -31,13 +31,8 @@
     </a>
     <ul class="dropdown-menu dropdown-user">
       <li>
-        <%= link_to "#" do %>
+        <%= link_to user_path current_user do %>
           <i class="fa fa-user fa-fw"></i> <%= t "header.user_profile" %>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "#" do %>
-          <i class="fa fa-gear fa-fw"></i> <%= t "header.settings" %>
         <% end %>
       </li>
       <li class="divider"></li>

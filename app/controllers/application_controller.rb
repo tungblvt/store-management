@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   include ProductsHelper
+  include ApplicationHelper
 
   def logged_in_user
     return if logged_in?

@@ -13,7 +13,7 @@ class CategoriesController < AdminsController
       render "categories/index"
     else
       flash[:danger] = t "store.no_permission"
-      redirect_to static_pages_home_path
+      redirect_to root_path
     end
   end
 
@@ -25,7 +25,7 @@ class CategoriesController < AdminsController
     @category = Category.new category_params
     if @category.save
       flash[:success] = t "category.delete_success"
-      redirect_to stores_url
+      redirect_to categories_path
     else
       render :new
     end

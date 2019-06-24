@@ -7,7 +7,7 @@
     <div class="address-store"><%= @store.address %></div>
     <div class="status-store">
       <div class="status-store-title"><%= t "store.status" %>:&nbsp;</div>
-      <% if @store.status? %>
+      <% if @store.opening? %>
         <span class="store-open"> <%= t "store.opening" %></span>
       <% else %>
         <span class="store-close"> <%= t "store.closing" %></span>

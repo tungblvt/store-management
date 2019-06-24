@@ -57,15 +57,17 @@ class ProductsController < AdminsController
   end
 
   def search
-    @products = Product.search(params[:keyword])
+    @order_detail = current_order.order_details.new
+    @products = Product.search(params[:keyword]).product_available
       .page(params[:page]).per(Settings.product_per_page)
       .order_by_column :price
   end
 
   def search_by_cate
+    @order_detail = current_order.order_details.new
     @category = Category.find_by id: params[:id]
     if @category
-      @products = @category.products.page(params[:page])
+      @products = @category.products.page(params[:page]).product_available
         .per(Settings.product_per_page).order_by_column :price
       render :search
     else

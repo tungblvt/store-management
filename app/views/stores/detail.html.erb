@@ -40,10 +40,13 @@
           <% category.products.each do |product| %>
             <div class="col-md-12">
               <div class="row">
+                <div class="hide-product-id">
+                  <%= hidden_field_tag :id, product.id %>
+                </div>
                 <div class="col-md-2 product-image">
                   <%= image_tag product.image.url, :size => Settings.image_product_small %>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-7 product-name">
                   <b><%= product.name %></b>
                   <br>
                   <%= product.description %>
@@ -52,8 +55,13 @@
                   <%= number_to_currency(product.price, locale: :vi) %>
                 </div>
                 <div class="col-md-1">
-                  <%= link_to "" do %>
-                    <i class="fa fa-plus-circle fa-delete" title = "<%= t "store.add_cart" %>"></i>
+                  <%= form_for(@order_detail, remote: true) do |f| %>
+                    <%= f.hidden_field :store_id, value: product.store.id %>
+                    <%= f.hidden_field :product_id, value: product.id %>
+                    <%= f.hidden_field :quantity, value: 1 %>
+                    <%= button_tag class: "fa-order" do%>
+                      <i class="fa fa-plus-circle" title = "<%= t "store.add_cart" %>"></i>
+                    <%  end %>
                   <% end %>
                 </div>
               </div>

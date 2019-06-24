@@ -5,6 +5,8 @@ class Order < ApplicationRecord
   has_many :order_details
   has_many :products, through: :order_details
 
+  before_save :set_subtotal
+
   scope :order_by_column, ->(column){order column}
   scope :group_by_column, ->(column){group column}
   scope :joins_order_details_products, ->(order_id){joins(:order_details, :products).where id: order_id}
@@ -18,4 +20,13 @@ class Order < ApplicationRecord
   delegate :name, to: :user, prefix: true
   delegate :name, to: :store, prefix: true
 
+  def subtotal
+    order_details.collect {|order_detail| order_detail.valid? ? order_detail.price.to_i*order_detail.quantity : Settings.sum_zero}.sum
+  end
+
+  private
+
+  def set_subtotal
+    self[:subtotal] = subtotal
+  end
 end
