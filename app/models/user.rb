@@ -15,10 +15,10 @@ class User < ApplicationRecord
   mount_uploader :avatar, PictureUploader
   validates :name, presence: true, length: {maximum: Settings.validates.name.name_max}
   validates :email, presence: true,
-    length: { maximum: Settings.validates.email.lenght },
+    length: { maximum: Settings.validates.email.length },
     format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :password, presence: true,
-    length: { minimum: Settings.validates.password.lenght.minimum },
+    length: { minimum: Settings.validates.password.length.minimum },
     allow_nil: true
 
   has_secure_password
