@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :comment do
     content {FFaker::Lorem.paragraph 1}
-    subtotal {FFaker::Random.rand 10}
+    rate {FFaker::Random.rand 5}
   end
 end
