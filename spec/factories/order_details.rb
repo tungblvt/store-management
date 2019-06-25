@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :order_details do
+  factory :order_detail do
     quantity {FFaker::Number.rand 10}
     price {FFaker::Random.rand 200000}
     total {FFaker::Random.rand 200000}
