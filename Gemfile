@@ -25,6 +25,8 @@ gem "figaro"
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "ffaker"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -38,6 +40,8 @@ group :test do
   gem "capybara", ">= 2.15"
   gem "selenium-webdriver"
   gem "chromedriver-helper"
+  gem "shoulda-matchers", "~> 3.0"
+  gem "database_cleaner", "~> 1.5"
 end
 
 group :production do
