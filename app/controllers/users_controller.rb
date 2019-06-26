@@ -3,7 +3,7 @@ class UsersController < AdminsController
 
   before_action :logged_in_user
   before_action :is_admin, only: %i(index destroy)
-  before_action :load_user, except: %i(index create)
+  before_action :load_user, except: %i(new index create)
 
   def new
     @user = User.new
