@@ -11,6 +11,10 @@ RSpec.describe Comment, type: :model do
   end
 
   context "validate" do
+    describe ".create" do
+      it {is_expected.to be_valid}
+    end
+
     describe "#content" do
       it {is_expected.to validate_presence_of :content}
     end
