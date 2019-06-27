@@ -1,15 +1,16 @@
 class CategoriesController < AdminsController
   before_action :load_category, only: %i(edit update destroy show)
+  before_action :have_permission
 
   def index
     if current_user.is_admin?
       @categories = Category.page(params[:page]).per(Settings.category_per_page)
-                        .order_by_column :name
+        .order_by_column :name
       render "categories/index"
     elsif current_user.is_manager?
       @stores = current_user.stores
       @categories = Category.IN_stores(@stores).page(params[:page]).per(Settings.category_per_page)
-                        .order_by_column :name
+        .order_by_column :name
       render "categories/index"
     else
       flash[:danger] = t "store.no_permission"
@@ -57,6 +58,18 @@ class CategoriesController < AdminsController
     @category = Category.find_by id: params[:id]
     return if @category
     render file: "#{Rails.root}/public/404", status: :not_found
+  end
+
+  def have_permission
+    if current_user.is_member?
+      render file: "#{Rails.root}/public/404", status: :not_found
+    elsif current_user.is_manager?
+      unless @category.nil?
+        if @category.store.user.id != current_user.id
+          render file: "#{Rails.root}/public/404", status: :not_found
+        end
+      end
+    end
   end
 
   private

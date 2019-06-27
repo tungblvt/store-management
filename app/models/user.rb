@@ -57,6 +57,10 @@ class User < ApplicationRecord
     User.roles[role] == Settings.role.manager.to_i
   end
 
+  def is_member?
+    User.roles[role] == Settings.role.member.to_i
+  end
+
   def image_size
     errors.add :avatar, t("user.validate_image_size") if avatar.size > Settings.validates.user.image_size.megabytes
   end
