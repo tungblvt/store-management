@@ -42,6 +42,7 @@ group :test do
   gem "chromedriver-helper"
   gem "shoulda-matchers", "~> 3.0"
   gem "database_cleaner", "~> 1.5"
+  gem "rails-controller-testing"
 end
 
 group :production do
